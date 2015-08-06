@@ -1,0 +1,87 @@
+  <!-- Main Red = c52d2f-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Shop Homepage - Start Bootstrap Template</title>
+    
+    <!-- jQuery -->
+    <script src="javascripts/jquery.js"></script>
+    
+    <!-- Bootstrap Core CSS -->
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.min.css">
+    <link href="stylesheets/animate.min.css" rel="stylesheet">
+    <link href="stylesheets/prettyPhoto.css" rel="stylesheet">
+    <link href="stylesheets/responsive.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="stylesheet" href="components/bootstrap-rtl/dist/css/bootstrap-rtl.min.css">
+    <link href="stylesheets/main.css" rel="stylesheet">
+    
+    <!-- Bootstrap Core JavaScript -->
+    <script src="javascripts/bootstrap.min.js"></script>
+     
+    <!-- owl-carousel -->
+    <link href="components/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="components/owl-carousel/owl.theme.css" rel="stylesheet">
+    <script src="components/owl-carousel/owl.carousel.min.js"></script>
+
+    <script src="javascripts/jquery.prettyPhoto.js"></script>
+    <script src="javascripts/jquery.isotope.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <script src="javascripts/wow.min.js"></script>
+
+    
+
+
+
+    <!-- Frontpage Demo -->
+    <script>
+
+    $(document).ready(function($) {
+      $("#owl-").owlCarousel();
+    });
+    
+    $(document).ready(function() {
+ 
+      $("#owl-example").owlCarousel({
+     
+          autoPlay: 3000, //Set AutoPlay to 3 seconds
+     
+          items : 4,
+          itemsDesktop : [1199,3],
+          itemsDesktopSmall : [979,3]
+     
+      });
+     
+    });
+    $("body").data("page", "frontpage");
+
+    </script>
+    
+    <script>
+        $(document).ready(function() {    
+        //Events that reset and restart the timer animation when the slides change
+        $("#transition-timer-carousel").on("slide.bs.carousel", function(event) {
+            //The animate class gets removed so that it jumps straight back to 0%
+            $(".transition-timer-carousel-progress-bar", this)
+                .removeClass("animate").css("width", "0%");
+        }).on("slid.bs.carousel", function(event) {
+            //The slide transition finished, so re-add the animate class so that
+            //the timer bar takes time to fill up
+            $(".transition-timer-carousel-progress-bar", this)
+                .addClass("animate").css("width", "100%");
+        });
+        
+        //Kick off the initial slide animation when the document is ready
+        $(".transition-timer-carousel-progress-bar", "#transition-timer-carousel")
+            .css("width", "100%");
+    });
+    
+    $('#myTab a').click(function (e) {
+      e.preventDefault()
+      $(this).tab('show')
+    })
+    </script>

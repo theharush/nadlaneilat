@@ -1,0 +1,14 @@
+<% include templates/head.ejs%>
+<% include templates/header.ejs%>
+
+<section id="error" class="container text-center">
+        <h1>404, העמוד לא נמצא!</h1>
+        <p>העמוד אשר חיפשת איננו נמצא, או שקיימת תקלה טכנית.</p>
+        <a class="btn btn-primary" href="/">חזרה לעמוד הבית</a>
+    </section><!--/#error-->
+    
+<h1><%= message %></h1>
+<h2><%= error.status %></h2>
+<pre><%= error.stack %></pre>
+
+<% include templates/footer.ejs%>

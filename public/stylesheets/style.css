@@ -1,0 +1,63 @@
+
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: right;
+    margin: auto;
+}
+
+.navbar-toggle{
+      float: left;
+  	margin-left: 15px;
+  }
+.nav>li>a {
+      text-align: right;
+  }
+.navbar-nav>li>.dropdown-menu{
+        text-align: right;
+    }
+        
+        body{
+            background: #f6f6f6;
+                background: -moz-linear-gradient(top,  #f6f6f6 0%, #e3e3e3 100%); 
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f6f6f6), color-stop(100%,#e3e3e3)); 
+                background: -webkit-linear-gradient(top,  #f6f6f6 0%,#e3e3e3 100%);
+                background: -o-linear-gradient(top,  #f6f6f6 0%,#e3e3e3 100%); 
+                background: -ms-linear-gradient(top,  #f6f6f6 0%,#e3e3e3 100%); 
+                background: linear-gradient(to bottom,  #f6f6f6 0%,#e3e3e3 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f6f6', endColorstr='#e3e3e3',GradientType=0 );
+            }
+        .navbar-brand
+        {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            text-align: right;
+            margin: auto;
+        }
+        
+        .navbar-toggle{
+             float: left!important;
+          }
+        .nav>li>a {
+              text-align: right;
+          }
+        .navbar-nav>li>.dropdown-menu{
+                text-align: right;
+        }
+        .navbar{
+            margin-bottom:0;
+            height:100px;
+            
+        }
+        
+        .brand-logo{
+            margin-top:20px;
+            margin-right:20px;
+            margin-left:auto;
+        }
+      */

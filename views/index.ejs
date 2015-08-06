@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <% include templates/head.ejs%>
+  </head>
+  <body>
+
+    <% include templates/header.ejs%>
+    
+    
+ <style type="text/css">
+        .transition-timer-carousel .carousel-captiontry {
+            background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 4%, rgba(0,0,0,0.5) 32%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(4%,rgba(0,0,0,0.1)), color-stop(32%,rgba(0,0,0,0.5)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 4%,rgba(0,0,0,0.5) 32%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 4%,rgba(0,0,0,0.5) 32%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 4%,rgba(0,0,0,0.5) 32%,rgba(0,0,0,1) 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 4%,rgba(0,0,0,0.2) 32%,rgba(0,0,0,0.4) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+        	width: 100%;
+        	left: 0px;
+        	right: 0px;
+        	top:0px;
+        	text-align: left;
+        	padding-top: 3%;
+        	padding-left: 10%;
+        	padding-right: 10%;
+        }
+        
+        .camera_caption h1 {
+          text-align: right;
+          float: right;
+          margin-top: 13%;
+          padding: 15px 20px;
+          display: block;
+          max-width: 550px;
+          color: #fff;
+          font-size: 42px;
+          line-height: 52px;
+          color: #fff;
+          border-right: 5px solid #000;
+          position: relative;
+        }
+        
+        .camera_caption h1:before {
+          -webkit-transition-duration: 0.3s;
+          content: '';
+          border-style: solid;
+          border-width: 81px 70px 0 0;
+          left: -70px;
+          position: absolute;
+          top: -webkit-calc(50% - 40px);
+          border-color: transparent #F68621 transparent transparent;
+        }
+        
+        .camera_caption p {
+            border-left: 5px solid #F68621;
+            color: #fff;
+            font-size: 15px;
+            line-height: 28px;
+            font-weight: normal;
+            max-width: 580px;
+            padding: 10px;
+            text-align: right;
+            background: #000;
+            background: rgba(0,0,0,0.8);
+            margin-top: 70px;
+        }
+        .camera_caption ul {
+          list-style: none;
+          margin: 0;
+          text-align: right;
+          width: 80%;
+          margin-right: -40px;
+          margin-top:20px;
+        }
+        .camera_caption ul li {
+          display: inline-block;
+          padding: 10px 20px 10px 35px;
+          background: #000;
+          background: rgba(0,0,0,0.8);
+          margin-left: 10px;
+          text-align: right;
+          color: #fff;
+        }
+        .camera_caption .more {
+          float: right;
+          margin: 0;
+          text-align: right;
+          width: 100%;
+          margin-top: 30px;
+        }
+
+        .camera_caption p, .camera_caption ul li {
+          border-left: 5px solid #F68621;
+        }
+        
+        .more .button {
+          width: auto;
+          border: 0;
+          color: #fff;
+          font-style: italic;
+          margin: 10px 0;
+          -webkit-transition: 0.3s all ease;
+          -moz-transition: 0.3s all ease;
+          -o-transition: 0.3s all ease;
+          -ms-transition: 0.3s all ease;
+          transition: 0.3s all ease;
+            
+          padding: 10px 30px;
+          font-size: 18px;
+          font-weight: bold;
+          border-right: 5px solid #000;
+        }
+        
+        .delay1 {
+          animation-delay: 100ms;
+          -webkit-animation-delay: 100ms;
+        }
+        
+        .delay2 {
+          animation-delay: 300ms;
+          -webkit-animation-delay: 300ms;
+        }
+        
+        .delay3 {
+          animation-delay: 600ms;
+          -webkit-animation-delay: 600ms;
+        }
+        
+        .delay4 {
+          animation-delay: 900ms;
+          -webkit-animation-delay: 900ms;
+        }
+        
+        .pad-right-10{
+            padding-left:10px;
+        }
+        
+    </style>
+    <!--carousel-->
+   <div class="container carousel-container">
+        <div class="row">
+            <!-- The carousel -->
+            <div id="transition-timer-carousel" class="carousel slide transition-timer-carousel" data-ride="carousel">
+    			<!-- Indicators -->
+    			<ol class="carousel-indicators">
+    				<li data-target="#transition-timer-carousel" data-slide-to="0" class="active"></li>
+    				<li data-target="#transition-timer-carousel" data-slide-to="1"></li>
+    				<li data-target="#transition-timer-carousel" data-slide-to="2"></li>
+    			</ol>
+    
+    			<!-- Wrapper for slides -->
+    			<div class="carousel-inner">
+    				<div class="item active">
+                        <img class = "slider-img" src="images/slider/bg1.jpg" />
+                        <div class="carousel-caption carousel-captiontry camera_caption">
+                            <h1 class="carousel-caption-header animated fadeInRight delay1">
+                                בית מספר 1
+                            </h1><br><br>
+                            <p class="carousel-caption-text animated fadeInRight delay2 hidden-xs">
+                                תיאור 1:
+                                  לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטוי
+                            </p>
+                            <ul class="animated fadeInRight delay3 hidden-xs">
+                                <li><span class="pad-right-10">3</span><i class="fa fa-bed"></i></li>
+                                <li><span class="pad-right-10">נוף לים</span><i class="fa fa-binoculars"></i></li>
+                                <li><span class="pad-right-10">5000</span>₪</li>
+                            </ul>
+                            <div class="more animated fadeInRight delay4 hidden-xs">
+                                <a href="properties.html" class="button">ראה עוד</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="item">
+                        <img class = "slider-img" src="images/slider/bg2.jpg" />
+                        <div class="carousel-caption carousel-captiontry camera_caption">
+                            <h1 class="carousel-caption-header animated fadeInRight delay1">
+                                בית מספר 2
+                            </h1><br><br>
+                            <p class="carousel-caption-text animated fadeInRight delay2 hidden-xs">
+                                תיאור 2:
+                                  לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטוי
+                            </p>
+                            <ul class="animated fadeInRight delay3 hidden-xs">
+                                <li><span class="pad-right-10">8</span><i class="fa fa-bed"></i></li>
+                                <li><span class="pad-right-10">ללא נוף</span><i class="fa fa-binoculars"></i></li>
+                                <li><span class="pad-right-10">1800000</span>₪</li>
+                            </ul>
+                            <div class="more animated fadeInRight delay4 hidden-xs">
+                                <a href="properties.html" class="button">ראה עוד</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="item">
+                        <img class = "slider-img" src="images/slider/bg3.jpg" />
+                        <div class="carousel-caption carousel-captiontry camera_caption">
+                            <h1 class="carousel-caption-header animated fadeInRight delay1">
+                                בית מספר 3
+                            </h1><br><br>
+                            <p class="carousel-caption-text animated fadeInRight delay2 hidden-xs">
+                                תיאור 3:
+                                  לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטוי
+                            </p>
+                            <ul class="animated fadeInRight delay3 hidden-xs">
+                                <li><span class="pad-right-10">5</span><i class="fa fa-bed"></i></li>
+                                <li><span class="pad-right-10">נוף להרים</span><i class="fa fa-binoculars"></i></li>
+                                <li><span class="pad-right-10">60000</span>₪</li>
+                            </ul>
+                            <div class="more animated fadeInRight delay4 hidden-xs">
+                                <a href="properties.html" class="button">ראה עוד</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    			<!-- Controls -->
+    			<a class="left carousel-control" href="#transition-timer-carousel" data-slide="next">
+    				<span class="glyphicon glyphicon-chevron-left"></span>
+    			</a>
+    			<a class="right carousel-control" href="#transition-timer-carousel" data-slide="prev">
+    				<span class="glyphicon glyphicon-chevron-right"></span>
+    			</a>
+                
+                <!-- Timer "progress bar" -->
+                <hr class="transition-timer-carousel-progress-bar animate" />
+    		</div>
+        </div>
+    </div>
+    <!--end carousel-->
+
+
+ <div class="container-fluid properties-container" >
+        <div class="container container-pad" id="property-listings">
+            <div class="row">
+                <div class="col-sm-12 properties-header">
+                        <span class="properties-subtitle">הצעות</span>
+                        <br>
+                        <h1 class="properties-title"> מומלץ להסתכל</h1>
+                </div>
+                
+
+                <% var num = 0; for(var i=1; i<3; i++) {%>
+                        <div class="col-sm-6">
+                        <% for(var k=1; k<3; k++) {%>
+                          
+                          <!-- Begin Listing-->
+                          <% var propid = recom.recProperties[num].propertyID %>
+                          <% var img = "prop-images/" + (num+1) + "/1.jpg" %>
+                          <div class="bgc-fff btm-mrg-20 property-listing">
+                              <div class="property">
+                                  <div class="property-img">
+                                      <a class="pull-right pad-0 no-of" href="#" target="_parent">
+                                      <div class = "property-tag sale"></div>
+                                      <img alt="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg" class="img-responsive" src="<%= img %>">
+                                      </a>
+                                  </div>
+                                  <div class="clearfix visible-sm"></div>
+                                  <div class="media-body fnt-smaller pad-10">
+                                      <h4 class="media-heading">
+                                        <a href="#" target="_parent"> <%= recom.recProperties[num].adress %> <small class="pull-left"><%= recom.recProperties[num].price %></small></a></h4>
+                                      <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                          <li><%= recom.recProperties[num].roomnum %> חדרים</li>
+                                          <li style="list-style: none">|</li>
+                                          <li><%= recom.recProperties[num].view %></li>
+                                          <li style="list-style: none">|</li>
+                                          <li><%= recom.recProperties[num].size %> מ״ר</li>
+                                      </ul>
+                                      <p class="hidden-xs">
+                                          <%= recom.recProperties[num].comments %>
+                                      </p><span class="fnt-smaller fnt-lighter fnt-arial">
+                                          <%= recom.recProperties[num].subcomments %>
+                                      </span>
+                                  </div>
+                              </div>
+                          </div><!-- End Listing-->
+                           
+                        <% num++; } %>
+                        </div>
+                <% } %>
+
+                </div><!-- End Col -->
+            </div><!-- End row -->
+        </div><!-- End container -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 hr-styled">
+                    <div class="diviser">
+                        <div class="circle_right"></div>
+                        <div class="circle_left"></div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+
+
+        
+        
+<div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+                <h1 class="properties-title btm-mrg-30">נכסינו האחרונים</h1><br><br><br>
+            </div>
+            
+            <div class="col-sm-12"  style="direction:ltr;">
+              <div id="owl-example" class="owl-carousel">
+
+                <div class="owl-item darkCyan">
+                  <div class="bgc-fff btm-mrg-20 property-listing">
+                        <div class="property">
+                            <div class="property-img">
+                                <a class="pull-right pad-0 no-of" href="#" target="_parent">
+                                <div class = "property-tag sale"></div>
+                                <img alt="image" class="img-responsive" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
+                                </a>
+                            </div>
+                            <div class="clearfix visible-sm"></div>
+                            <div class="media-body fnt-smaller pad-10">
+                                <h4 class="media-heading">
+                                  <a href="#" target="_parent"> אסתר המלכה 60<small class="pull-left">₪1,975,000</small></a></h4>
+                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                    <li>5 חדרים</li>
+                                    <li style="list-style: none">|</li>
+                                    <li>נוף לים</li>
+                                    <li style="list-style: none">|</li>
+                                    <li>180 מ״ר</li>
+                                </ul>
+                                <p class="hidden-xs">
+                                    כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.
+                                </p><span class="fnt-smaller fnt-lighter fnt-arial">
+                                    מקום לאותיות קטנות*
+                                </span>
+                            </div>
+                        </div>
+                    </div><!-- End Listing-->
+                </div>
+                <div class="owl-item darkCyan">
+                  <div class="bgc-fff btm-mrg-20 property-listing">
+                        <div class="property">
+                            <div class="property-img">
+                                <a class="pull-right pad-0 no-of" href="#" target="_parent">
+                                <div class = "property-tag sale"></div>
+                                <img alt="image" class="img-responsive" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
+                                </a>
+                            </div>
+                            <div class="clearfix visible-sm"></div>
+                            <div class="media-body fnt-smaller pad-10">
+                                <h4 class="media-heading">
+                                  <a href="#" target="_parent"> אסתר המלכה 60<small class="pull-left">₪1,975,000</small></a></h4>
+                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                    <li>5 חדרים</li>
+                                    <li style="list-style: none">|</li>
+                                    <li>נוף לים</li>
+                                    <li style="list-style: none">|</li>
+                                    <li>180 מ״ר</li>
+                                </ul>
+                                <p class="hidden-xs">
+                                    כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.
+                                </p><span class="fnt-smaller fnt-lighter fnt-arial">
+                                    מקום לאותיות קטנות*
+                                </span>
+                            </div>
+                        </div>
+                    </div><!-- End Listing-->
+                </div>
+                <div class="owl-item darkCyan">
+                  <div class="bgc-fff btm-mrg-20 property-listing">
+                        <div class="property">
+                            <div class="property-img">
+                                <a class="pull-right pad-0 no-of" href="#" target="_parent">
+                                <div class = "property-tag sale"></div>
+                                <img alt="image" class="img-responsive" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
+                                </a>
+                            </div>
+                            <div class="clearfix visible-sm"></div>
+                            <div class="media-body fnt-smaller pad-10">
+                                <h4 class="media-heading">
+                                  <a href="#" target="_parent"> אסתר המלכה 60<small class="pull-left">₪1,975,000</small></a></h4>
+                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                    <li>5 חדרים</li>
+                                    <li style="list-style: none">|</li>
+                                    <li>נוף לים</li>
+                                    <li style="list-style: none">|</li>
+                                    <li>180 מ״ר</li>
+                                </ul>
+                                <p class="hidden-xs">
+                                    כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.
+                                </p><span class="fnt-smaller fnt-lighter fnt-arial">
+                                    מקום לאותיות קטנות*
+                                </span>
+                            </div>
+                        </div>
+                    </div><!-- End Listing-->
+                </div>
+                <div class="owl-item darkCyan">
+                  <div class="bgc-fff btm-mrg-20 property-listing">
+                        <div class="property">
+                            <div class="property-img">
+                                <a class="pull-right pad-0 no-of" href="#" target="_parent">
+                                <div class = "property-tag sale"></div>
+                                <img alt="image" class="img-responsive" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
+                                </a>
+                            </div>
+                            <div class="clearfix visible-sm"></div>
+                            <div class="media-body fnt-smaller pad-10">
+                                <h4 class="media-heading">
+                                  <a href="#" target="_parent"> אסתר המלכה 60<small class="pull-left">₪1,975,000</small></a></h4>
+                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                    <li>5 חדרים</li>
+                                    <li style="list-style: none">|</li>
+                                    <li>נוף לים</li>
+                                    <li style="list-style: none">|</li>
+                                    <li>180 מ״ר</li>
+                                </ul>
+                                <p class="hidden-xs">
+                                    כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.
+                                </p><span class="fnt-smaller fnt-lighter fnt-arial">
+                                    מקום לאותיות קטנות*
+                                </span>
+                            </div>
+                        </div>
+                    </div><!-- End Listing-->
+                </div>
+                <div class="owl-item darkCyan">
+                  <div class="bgc-fff btm-mrg-20 property-listing">
+                        <div class="property">
+                            <div class="property-img">
+                                <a class="pull-right pad-0 no-of" href="#" target="_parent">
+                                <div class = "property-tag sale"></div>
+                                <img alt="image" class="img-responsive" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
+                                </a>
+                            </div>
+                            <div class="clearfix visible-sm"></div>
+                            <div class="media-body fnt-smaller pad-10">
+                                <h4 class="media-heading">
+                                  <a href="#" target="_parent"> אסתר המלכה 60<small class="pull-left">₪1,975,000</small></a></h4>
+                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                    <li>5 חדרים</li>
+                                    <li style="list-style: none">|</li>
+                                    <li>נוף לים</li>
+                                    <li style="list-style: none">|</li>
+                                    <li>180 מ״ר</li>
+                                </ul>
+                                <p class="hidden-xs">
+                                    כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.
+                                </p><span class="fnt-smaller fnt-lighter fnt-arial">
+                                    מקום לאותיות קטנות*
+                                </span>
+                            </div>
+                        </div>
+                    </div><!-- End Listing-->
+                </div>
+                <div class="owl-item darkCyan">
+                  <div class="bgc-fff btm-mrg-20 property-listing">
+                        <div class="property">
+                            <div class="property-img">
+                                <a class="pull-right pad-0 no-of" href="#" target="_parent">
+                                <div class = "property-tag sale"></div>
+                                <img alt="image" class="img-responsive" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
+                                </a>
+                            </div>
+                            <div class="clearfix visible-sm"></div>
+                            <div class="media-body fnt-smaller pad-10">
+                                <h4 class="media-heading">
+                                  <a href="#" target="_parent"> אסתר המלכה 60<small class="pull-left">₪1,975,000</small></a></h4>
+                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                    <li>5 חדרים</li>
+                                    <li style="list-style: none">|</li>
+                                    <li>נוף לים</li>
+                                    <li style="list-style: none">|</li>
+                                    <li>180 מ״ר</li>
+                                </ul>
+                                <p class="hidden-xs">
+                                    כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.
+                                </p><span class="fnt-smaller fnt-lighter fnt-arial">
+                                    מקום לאותיות קטנות*
+                                </span>
+                            </div>
+                        </div>
+                    </div><!-- End Listing-->
+                </div>
+                <div class="owl-item darkCyan">
+                  <div class="bgc-fff btm-mrg-20 property-listing">
+                        <div class="property">
+                            <div class="property-img">
+                                <a class="pull-right pad-0 no-of" href="#" target="_parent">
+                                <div class = "property-tag sale"></div>
+                                <img alt="image" class="img-responsive" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
+                                </a>
+                            </div>
+                            <div class="clearfix visible-sm"></div>
+                            <div class="media-body fnt-smaller pad-10">
+                                <h4 class="media-heading">
+                                  <a href="#" target="_parent"> אסתר המלכה 60<small class="pull-left">₪1,975,000</small></a></h4>
+                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                    <li>5 חדרים</li>
+                                    <li style="list-style: none">|</li>
+                                    <li>נוף לים</li>
+                                    <li style="list-style: none">|</li>
+                                    <li>180 מ״ר</li>
+                                </ul>
+                                <p class="hidden-xs">
+                                    כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.כאן יכנס תיאור של הבית הזה.
+                                </p><span class="fnt-smaller fnt-lighter fnt-arial">
+                                    מקום לאותיות קטנות*
+                                </span>
+                            </div>
+                        </div>
+                    </div><!-- End Listing-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    
+    <% include templates/footer.ejs%>
+
+
+  </body>
+</html>
