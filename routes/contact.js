@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET board page. */
 router.get('/', function(req, res, next) {
-  res.render('contact', { title: 'contact'});
+  res.render('contact', { title: 'Contact'});
 });
 
 module.exports = router;

@@ -1,0 +1,58 @@
+ <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+                <h1 class="properties-title btm-mrg-30">המלצות</h1><br><br><br>
+            </div>
+          
+            <div class="col-sm-12"  style="direction:ltr;">
+              <div id="owl-example" class="owl-carousel">
+                
+                
+                <% recom.recProperties.forEach(function(item){ %>
+                
+                
+                    <div class="owl-item darkCyan">
+                      <div class="bgc-fff btm-mrg-20 property-listing">
+                            <div class="property">
+                                <div class="property-img">
+                                    <a class="pull-right pad-0 no-of" href="#" target="_parent">
+                                      
+                                      <% if(item.action == 1) { %>
+                                        <div class = "property-tag sale"></div>
+                                      <% } else { %>
+                                        <div class = "property-tag rent"></div>
+                                      <% } %>
+                                      
+                                      <img alt="image" class="img-responsive" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg">
+                                    </a>
+                                </div>
+                                <div class="clearfix visible-sm"></div>
+                                <div class="media-body fnt-smaller pad-10">
+                                    <h4 class="media-heading">
+                                      <a href="#" target="_parent"><%= item.adress  %><small class="pull-left"><%= item.price %></small></a></h4>
+                                    <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                        <li><%= item.roomnum %> חדרים</li>
+                                        <li style="list-style: none">|</li>
+                                        <li><%= item.view %></li>
+                                        <li style="list-style: none">|</li>
+                                        <li><%= item.size %> מ״ר</li>
+                                    </ul>
+                                    <p class="hidden-xs">
+                                        <%= item.comments %>
+                                    </p><span class="fnt-smaller fnt-lighter fnt-arial">
+                                        <%= item.subcomments %>
+                                    </span>
+                                </div>
+                            </div>
+                        </div><!-- End Listing-->
+                    </div>
+                
+                
+                <% }); %>
+  
+  
+              </div>
+            </div>
+          </div>
+        </div>
+
