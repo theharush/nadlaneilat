@@ -1,0 +1,211 @@
+
+ <style type="text/css">
+        .transition-timer-carousel .carousel-captiontry {
+            background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 4%, rgba(0,0,0,0.5) 32%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(4%,rgba(0,0,0,0.1)), color-stop(32%,rgba(0,0,0,0.5)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 4%,rgba(0,0,0,0.5) 32%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 4%,rgba(0,0,0,0.5) 32%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 4%,rgba(0,0,0,0.5) 32%,rgba(0,0,0,1) 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 4%,rgba(0,0,0,0.2) 32%,rgba(0,0,0,0.4) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+        	width: 100%;
+        	left: 0px;
+        	right: 0px;
+        	top:0px;
+        	text-align: left;
+        	padding-top: 3%;
+        	padding-left: 10%;
+        	padding-right: 10%;
+        }
+        
+        .camera_caption h1 {
+          text-align: right;
+          float: right;
+          margin-top: 13%;
+          padding: 15px 20px;
+          display: block;
+          max-width: 550px;
+          color: #fff;
+          font-size: 42px;
+          line-height: 52px;
+          color: #fff;
+          border-right: 5px solid #000;
+          position: relative;
+        }
+        
+        .camera_caption h1:before {
+          -webkit-transition-duration: 0.3s;
+          content: '';
+          border-style: solid;
+          border-width: 81px 70px 0 0;
+          left: -70px;
+          position: absolute;
+          top: -webkit-calc(50% - 40px);
+          border-color: transparent #F68621 transparent transparent;
+        }
+        
+        .camera_caption p {
+            border-left: 5px solid #F68621;
+            color: #fff;
+            font-size: 15px;
+            line-height: 28px;
+            font-weight: normal;
+            max-width: 580px;
+            padding: 10px;
+            text-align: right;
+            background: #000;
+            background: rgba(0,0,0,0.8);
+            margin-top: 70px;
+        }
+        .camera_caption ul {
+          list-style: none;
+          margin: 0;
+          text-align: right;
+          width: 80%;
+          margin-right: -40px;
+          margin-top:20px;
+        }
+        .camera_caption ul li {
+          display: inline-block;
+          padding: 10px 20px 10px 35px;
+          background: #000;
+          background: rgba(0,0,0,0.8);
+          margin-left: 10px;
+          text-align: right;
+          color: #fff;
+        }
+        .camera_caption .more {
+          float: right;
+          margin: 0;
+          text-align: right;
+          width: 100%;
+          margin-top: 30px;
+        }
+
+        .camera_caption p, .camera_caption ul li {
+          border-left: 5px solid #F68621;
+        }
+        
+        .more .button {
+          width: auto;
+          border: 0;
+          color: #fff;
+          font-style: italic;
+          margin: 10px 0;
+          -webkit-transition: 0.3s all ease;
+          -moz-transition: 0.3s all ease;
+          -o-transition: 0.3s all ease;
+          -ms-transition: 0.3s all ease;
+          transition: 0.3s all ease;
+            
+          padding: 10px 30px;
+          font-size: 18px;
+          font-weight: bold;
+          border-right: 5px solid #000;
+        }
+        
+        .delay1 {
+          animation-delay: 100ms;
+          -webkit-animation-delay: 100ms;
+        }
+        
+        .delay2 {
+          animation-delay: 300ms;
+          -webkit-animation-delay: 300ms;
+        }
+        
+        .delay3 {
+          animation-delay: 600ms;
+          -webkit-animation-delay: 600ms;
+        }
+        
+        .delay4 {
+          animation-delay: 900ms;
+          -webkit-animation-delay: 900ms;
+        }
+        
+        .pad-right-10{
+            padding-left:10px;
+        }
+        .property{
+            min-height:150px;
+        }
+        .asd{
+            position: absolute;
+            top: 50%;
+            z-index: 5;
+            display: inline-block;
+        }
+        .glyphicon-chevron-right:before {
+          content: "";
+        }
+        .glyphicon-chevron-left:before {
+          content: "";
+        }
+    </style>
+    
+    
+    
+    <div class="container carousel-container">
+        <div class="row">
+            <!-- The carousel -->
+        <div id="transition-timer-carousel" class="carousel slide transition-timer-carousel" data-ride="carousel">
+    			<!-- Indicators -->
+    			<ol class="carousel-indicators">
+    				<li data-target="#transition-timer-carousel" data-slide-to="0" class="active"></li>
+    				<li data-target="#transition-timer-carousel" data-slide-to="1"></li>
+    				<li data-target="#transition-timer-carousel" data-slide-to="2"></li>
+    			</ol>
+    
+    			<!-- Wrapper for slides -->
+    			<div class="carousel-inner">
+        				
+        				<% var first = true %>
+        				<% for(var num = 0; num<=2; num++) {%>
+          				  <% if(first == true) { %>
+          				    <div class="item active">
+          				    <% first = false %>
+          				  <% } else { %>
+          				    <div class="item">
+          				  <% } %>
+        				        
+        				        <% var img = "prop-images/" + (num) + "/1.jpg" %>
+            				    <img class = "slider-img" alt="תמונה לא נמצאה" src="<%= img %>"/>
+                        <div class="carousel-caption carousel-captiontry camera_caption">
+                            <h1 class="carousel-caption-header animated fadeInRight delay1">
+                                <%= recom.recProperties[num].adress %>
+                            </h1><br><br>
+                            <p class="carousel-caption-text animated fadeInRight delay2 hidden-xs">
+                                הערות:
+                                <%= recom.recProperties[num].comments %>
+                            </p>
+                            <ul class="animated fadeInRight delay3 hidden-xs">
+                                <li><span class="pad-right-10"><%= recom.recProperties[num].roomnum %></span><i class="fa fa-bed"></i></li>
+                                <li><span class="pad-right-10"><%= recom.recProperties[num].view %></span><i class="fa fa-binoculars"></i></li>
+                                <li><span class="pad-right-10"><%= recom.recProperties[num].price %></span>₪</li>
+                            </ul>
+                            <div class="more animated fadeInRight delay4 hidden-xs">
+                                <a href="/property?id=<%= recom.recProperties[num].propertyID %>" class="button">ראה עוד</a>
+                            </div>
+                        </div>
+                      </div>
+        				  
+        				<% } %>
+        				
+        				
+          </div>
+    
+    			<!-- Controls -->
+    			<a class="left carousel-control" href="#transition-timer-carousel" data-slide="next">
+    				<span class="glyphicon glyphicon-chevron-left" style="content: 0;"><i class="fa fa-backward asd"></i></span>
+    			</a>
+    			<a class="right carousel-control" href="#transition-timer-carousel" data-slide="prev">
+    				<span class="glyphicon glyphicon-chevron-right" style="content: 0;"><i class="fa fa-forward asd"></i></span>
+    			</a>
+                
+                <!-- Timer "progress bar" -->
+                <hr class="transition-timer-carousel-progress-bar animate" />
+    		</div>
+        </div>
+    </div>
+    <!--end carousel-->

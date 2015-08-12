@@ -7,11 +7,27 @@
   <body>
 
     <% include templates/header.ejs%>
-    
-    <% include templates/homeCarousel.ejs%>
- 
+ <style type="text/css">
 
- <div class="container-fluid properties-container" >
+        .property{
+            min-height:150px;
+        }
+        .top-bar{
+            display:none;
+        }
+        .container{
+            width:95%;
+        }
+   
+        @media only screen and (min-width: 992px)
+        #property-listings .property-listing img {
+          max-width: 180px;
+          height: 150px;
+        }
+
+    </style>
+    
+    <div class="container-fluid properties-container" >
         <div class="container container-pad" id="property-listings">
             <div class="row">
                 <div class="col-sm-12 properties-header">
@@ -23,17 +39,16 @@
                 
             <div class="row">
 
-                <% var num = 0; for(var i=1; i<3; i++) {%>
-                        
-                        <% for(var k=1; k<3; k++) {%>
-                          <div class="col-md-6">
+                 <% recom.recProperties.forEach(function(item){ %>
+                 <% var img = "prop-images/" + (item.propertyID - 1) + "/1.jpg" %>
+                          <div class="col-lg-4 col-sm-6 col-xs-12">
                               <!-- Begin Listing-->
-                              <% var propid = recom.recProperties[num].propertyID %>
-                              <% var img = "prop-images/" + (num) + "/1.jpg" %>
+                              <% var propid = item.propertyID %>
+                              <% var img = "prop-images/" + (item.propertyID - 1) + "/1.jpg" %>
                               <div class="bgc-fff btm-mrg-20 property-listing">
                                   <div class="property">
                                       <div class="property-img">
-                                          <a class="pull-right pad-0 no-of" href="/property?id=<%= recom.recProperties[num].propertyID %>" target="_parent">
+                                          <a class="pull-right pad-0 no-of" href="/property?id=<%= item.propertyID %>" target="_parent">
                                           <div class = "property-tag sale"></div>
                                           <img alt="תמונה לא נמצאה" class="img-responsive" src="<%= img %>">
                                           </a>
@@ -41,37 +56,30 @@
                                       <div class="clearfix visible-sm"></div>
                                       <div class="media-body fnt-smaller pad-10">
                                           <h4 class="media-heading">
-                                            <a href="/property?id=<%= recom.recProperties[num].propertyID %>" target="_parent"> <%= recom.recProperties[num].adress %> <small class="pull-left"><%= recom.recProperties[num].price %></small></a></h4>
+                                            <a href="/property?id=<%= item.propertyID %>" target="_parent"> <%= item.adress %> <small class="pull-left"><%= item.price %></small></a></h4>
                                           <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-                                              <li><%= recom.recProperties[num].roomnum %> חדרים</li>
+                                              <li><%= item.roomnum %> חדרים</li>
                                               <li style="list-style: none">|</li>
-                                              <li><%= recom.recProperties[num].view %></li>
+                                              <li><%= item.view %></li>
                                               <li style="list-style: none">|</li>
-                                              <li><%= recom.recProperties[num].size %> מ״ר</li>
+                                              <li><%= item.size %> מ״ר</li>
                                           </ul>
                                           <p class="hidden-xs">
-                                              <%= recom.recProperties[num].comments %>
+                                              <%= item.comments %>
                                           </p><span class="fnt-smaller fnt-lighter fnt-arial">
-                                              <%= recom.recProperties[num].subcomments %>
+                                              <%= item.subcomments %>
                                           </span>
                                       </div>
                                   </div>
                               </div><!-- End Listing-->
                         </div>
-
-                        <% num++; } %>
-                <% } %>
+                <% }); %>
 
                 </div><!-- End Col -->
             </div><!-- End row -->
         </div><!-- End container -->
 
-    
-    <% include templates/recSlideshow.ejs%>
-
-    
     <% include templates/footer.ejs%>
-
 
   </body>
 </html>
