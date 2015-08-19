@@ -13,19 +13,8 @@ var morgan = require('morgan');
 
 //ANALYTICS =========================
 var ua = require('universal-analytics');
-var visitor = ua('UA-XXXX-XX');
-visitor.pageview("/", function (err) {
-      if (app.get('env') === 'development') {
-      app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-          message: err.message,
-          error: err
-        });
-      });
-    }
-});
-
+var visitor = ua('UA-66530521-1');
+visitor.pageview("/", "Welcome", "http://joergtillmann.com").send();
 
 //DataBase
 mongoose.connect('mongodb://nadlaneilat:nadlan1234@ds033123.mongolab.com:33123/nadlaneilat');
