@@ -9,6 +9,10 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var morgan = require('morgan');
 
+//ANALYTICS =========================
+var ua = require('universal-analytics');
+var visitor = ua('UA-XXXX-XX');
+
 
 
 //DataBase
