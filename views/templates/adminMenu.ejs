@@ -1,0 +1,17 @@
+<style>
+       .ligray{
+           background: #fBfBfD;
+       } 
+       .pager li>a{border-radius: 4px;border: 0px;color: #fafafa;font-size: 22px;background-color:#333}
+       .pager li>a:focus,.pager li>a:hover{text-decoration:none;background-color:#F68620}
+       .username{float:right;margin-right:20px;}
+</style>
+
+<div class="navbar ligray" style = "direction:rtl; text-align:right;">
+    <ul class="pager">
+        <li><a href="/manage">ראשי</a></li> 
+        <li class="active"><a href="#">הודעות</a></li>
+        <li><a href="/manage/addhouseform">הוספת בית</a></li>
+        <li><a class="username" href="#"><strong>מחובר כ:</strong> <%= user.username %></a></li> 
+    </ul>
+</div>

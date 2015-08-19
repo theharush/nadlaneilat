@@ -1,5 +1,0 @@
-mongodb
-multiple images
-email form
-domain
-board page

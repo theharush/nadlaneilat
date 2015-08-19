@@ -1,0 +1,46 @@
+ToDo's:
+    
+    mongodb
+    multiple images
+    email form
+    domain
+    board page
+    add real agent pics
+
+    
+to enter shell:
+
+    mongo ds033123.mongolab.com:33123/nadlaneilat -u nadlaneilat -p nadlan1234
+    
+    
+require models:
+
+    var houses = require('./models/houses');
+
+
+Adding a new property:
+      
+      var house = new houses({
+        adress: 'SomeWhere',
+        price: 132456,
+        roomnum: 4,
+        action: true,
+        view: 'No View',
+        comments: 'These Are Comments',
+        subcomments: 'These Are Too!',
+        IsRec: true
+      });
+    
+    // call the built-in save method to save to the database
+    house.save(function(err) {
+      if (err) throw err;
+    
+      console.log('house saved successfully!');
+    });
+        
+      
+getting a document:
+      
+    mongoose.model('houses').find(function(err, hou){
+        console.log(hou);
+    });
