@@ -4,6 +4,11 @@
     <title><%= title %></title>
     <% include templates/head.ejs%>
         <link href="stylesheets/main.css" rel="stylesheet">
+        <style>
+            h1{
+                color:#5d5d5d;
+            }
+        </style>
   </head>
   <body>
 
@@ -15,22 +20,43 @@
                 
 <div class="container">
 
+    
     <div class="row">
-
-        <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
-
-                <% if (user.username) { %>
-                    <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>username</strong>: <%= user.username %><br>
-                        <strong>password</strong>: <%= user.password %>
-                    </p>
-                <% } %>
-
-            </div>
+        <div class="col-sm-12">
+            <h1>בתים במערכת:</h1>
+            <div class="table-responsive">          
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>כתובת</th>
+                    <th>מחיר</th>
+                    <th>מספר חדרים</th>
+                    <th>להשכרה?</th>
+                    <th>נוף</th>
+                    <th>הערות</th>
+                    <th>תת הערות</th>
+                    <th>מומלץ?</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                    <% houses.forEach(function(item){ %>
+                        <tr>
+                            <td><%= item._id %></td>
+                            <td><%= item.adress %></td>
+                            <td><%= item.price %></td>
+                            <td><%= item.roomnum %></td>
+                            <td><%= item.action %></td>
+                            <td><%= item.view %></td>
+                            <td><%= item.comments %></td>
+                            <td><%= item.subcomments %></td>
+                            <td><%= item.IsRec %></td>
+                        </tr>
+                    <% }); %>
+                    
+                </tbody>
+              </table>
+              </div>
         </div>
     </div>
 </div>

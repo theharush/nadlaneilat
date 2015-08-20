@@ -67,6 +67,8 @@ var property = require('./routes/property');
 var login = require('./routes/login');
 var admin = require('./routes/admin');
 admin.use(express.static(path.join(__dirname, 'public')));
+admin.use(flash()); // use connect-flash for flash messages stored in session
+
 
 app.use('/', homepage);
 app.use('/about', about);
@@ -82,23 +84,6 @@ app.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
 });
-    
-// =============================================================================
-// AUTHENTICATE (FIRST LOGIN) ==================================================
-// =============================================================================
-    // locally --------------------------------
-        // // SIGNUP =================================
-        // // show the signup form
-        // app.get('/signup', function(req, res) {
-        //     res.render('signup.ejs', { message: req.flash('signupMessage') });
-        // });
-
-        // process the signup form
-        app.post('/signup', passport.authenticate('local-signup', {
-            successRedirect : '/manage', // redirect to the secure manage section
-            failureRedirect : '/signup', // redirect back to the signup page if there is an error
-            failureFlash : true // allow flash messages
-        }));
 
 
 // catch 404 and forward to error handler

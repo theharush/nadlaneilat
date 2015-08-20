@@ -2,16 +2,19 @@
        .ligray{
            background: #fBfBfD;
        } 
-       .pager li>a{border-radius: 4px;border: 0px;color: #fafafa;font-size: 22px;background-color:#333}
-       .pager li>a:focus,.pager li>a:hover{text-decoration:none;background-color:#F68620}
-       .username{float:right;margin-right:20px;}
+       .pager li> .menubutton{border-radius: 4px;border: 0px;color: #fafafa;font-size: 22px;background-color:#333; margin:5px;}
+       .pager li> .menubutton:focus,.pager li>a:hover{text-decoration:none;background-color:#F68620}
+       .pager li> .username{border-radius: 4px;border: 0px;color: #fafafa;font-size: 22px;background-color:#F68620; margin:5px;};
+       .pager li> .username:focus,.pager li>a:hover{text-decoration:none;background-color:#F68620}
 </style>
 
 <div class="navbar ligray" style = "direction:rtl; text-align:right;">
     <ul class="pager">
-        <li><a href="/manage">ראשי</a></li> 
-        <li class="active"><a href="#">הודעות</a></li>
-        <li><a href="/manage/addhouseform">הוספת בית</a></li>
         <li><a class="username" href="#"><strong>מחובר כ:</strong> <%= user.username %></a></li> 
+        <li><a class="menubutton" href="/manage">ראשי</a></li> 
+        <li><a class="menubutton" href="#">הודעות</a></li>
+        <li><a class="menubutton" href="/manage/addhouseform">הוספת בית</a></li>
+        <li><a class="menubutton" href="/manage/signupform">רישום עובדים</a></li>
+        
     </ul>
 </div>
