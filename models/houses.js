@@ -10,6 +10,7 @@ var housesSchema = new Schema({
   roomnum: Number,
   action: Boolean,
   view: String,
+  size: Number,
   comments: String,
   subcomments: String,
   IsRec: Boolean

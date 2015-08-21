@@ -9,8 +9,7 @@ var flash = require('connect-flash');
 //Get main Admin page
 router.get('/', isLoggedIn, function(req, res) {
     console.log("a Logged manager entered /manage");
-    mongoose.model('houses').find(function(err, hou){
-        //var housesjson = JSON.stringify(hou, null, 4);
+    mongoose.model('houses').find(null, null, {sort: {'_id': -1}},function(err, hou){
         
         res.render('manage.ejs', {
             user : req.user,
@@ -19,6 +18,31 @@ router.get('/', isLoggedIn, function(req, res) {
         });
     });
 });
+
+router.get('/workers', isLoggedIn, function(req, res) {
+    console.log("a Logged manager entered /manage");
+    mongoose.model('User').find(null, null, {sort: {'_id': -1}},function(err, users){
+        
+        res.render('workers.ejs', {
+            user : req.user,
+            users: users,
+            title : 'טבלת עובדים'
+        });
+    });
+});
+
+router.get('/messages', isLoggedIn, function(req, res) {
+    console.log("a Logged manager entered /manage");
+    mongoose.model('Message').find(null, null, {sort: {'_id': -1}},function(err, users){
+        
+        res.render('messages.ejs', {
+            user : req.user,
+            users: users,
+            title : 'הודעות'
+        });
+    });
+});
+
 
 //Get house adding form
 router.get('/addhouseform', isLoggedIn, function(req, res) {
@@ -54,13 +78,13 @@ router.post('/addhouseform', function(req, res) {
                         newHouse.roomnum = req.body.roomnum;
                         newHouse.action = req.body.action;
                         newHouse.view = req.body.view;
+                        newHouse.size = req.body.size;
                         newHouse.comments = req.body.comments;
                         newHouse.subcomments = req.body.subcomments;
                         newHouse.IsRec = req.body.IsRec;
 
                         newHouse.save(function(err) {
                             if (err) throw err;
-                            console.log('house saved successfully!');
                             res.redirect('/manage');
                         });
                     }
@@ -74,24 +98,41 @@ router.post('/addhouseform', function(req, res) {
     });
 });
 
-// =============================================================================
-// AUTHENTICATE (FIRST LOGIN) ==================================================
-// =============================================================================
-        // SIGNUP =================================
-        // show the signup form
-        router.get('/signupform', function(req, res) {
-            res.render('signup.ejs', { message: req.flash('signupMessage'), 
-                                       title:"רישום עובדים",
-                                       user : req.user});
-        });
+// SIGNUP =================================
+// show the signup form
+router.get('/signupform', isLoggedIn, function(req, res) {
+    res.render('signup.ejs', { message: req.flash('signupMessage'), 
+                               title:"רישום עובדים",
+                               user : req.user});
+});
 
-        // process the signup form
-        router.post('/signupform', passport.authenticate('local-signup', {
-            successRedirect : '/manage', // redirect to the secure manage section
-            failureRedirect : '/manage/signupform', // redirect back to the signup page if there is an error
-            failureFlash : true // allow flash messages
-        }));
+// process the signup form
+router.post('/signupform', passport.authenticate('local-signup', {
+    successRedirect : '/manage/workers', // redirect to the secure manage section
+    failureRedirect : '/manage/signupform', // redirect back to the signup page if there is an error
+    failureFlash : true // allow flash messages
+}));
         
+router.get('/deleteHouse', isLoggedIn, function(req, res){
+    mongoose.model('houses').find({ '_id': req.query.id }).remove().exec();
+
+    //houses.find({ id:333 }).remove().exec();
+    res.redirect('/manage');
+});
+router.get('/deleteUser', isLoggedIn, function(req, res){
+    mongoose.model('User').find({ '_id': req.query.id }).remove().exec();
+
+    //houses.find({ id:333 }).remove().exec();
+    res.redirect('/manage');
+});
+router.get('/deleteMessage', isLoggedIn, function(req, res){
+    mongoose.model('Message').find({ '_id': req.query.id }).remove().exec();
+
+    //houses.find({ id:333 }).remove().exec();
+    res.redirect('/manage');
+});
+
+
         
 // route middleware to check user is not logged in
 function isLoggedIn(req, res, next) {

@@ -11,10 +11,13 @@
 <div class="navbar ligray" style = "direction:rtl; text-align:right;">
     <ul class="pager">
         <li><a class="username" href="#"><strong>מחובר כ:</strong> <%= user.username %></a></li> 
-        <li><a class="menubutton" href="/manage">ראשי</a></li> 
-        <li><a class="menubutton" href="#">הודעות</a></li>
+        <li><a class="menubutton" href="/manage">ראשי</a></li>
+        <li><a class="menubutton" href="/manage/messages">הודעות</a></li>
         <li><a class="menubutton" href="/manage/addhouseform">הוספת בית</a></li>
-        <li><a class="menubutton" href="/manage/signupform">רישום עובדים</a></li>
+        <% if(user.isadmin) { %>
+            <li><a class="menubutton" href="/manage/signupform">רישום עובדים</a></li>
+            <li><a class="menubutton" href="/manage/workers">טבלת עובדים</a></li>
+         <% } %>
         <li><a class="menubutton" href="/logout">התנתק</a></li>
         
     </ul>

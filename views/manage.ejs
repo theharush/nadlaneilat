@@ -32,11 +32,13 @@
                     <th>כתובת</th>
                     <th>מחיר</th>
                     <th>מספר חדרים</th>
+                    <th>גודל(מ״ר)</th>
                     <th>להשכרה?</th>
                     <th>נוף</th>
                     <th>הערות</th>
                     <th>תת הערות</th>
                     <th>מומלץ?</th>
+                    <th>מחק</th>
                   </tr>
                 </thead>
                 <tbody> 
@@ -46,11 +48,13 @@
                             <td><%= item.adress %></td>
                             <td><%= item.price %></td>
                             <td><%= item.roomnum %></td>
+                            <td><%= item.size %></td>
                             <td><%= item.action %></td>
                             <td><%= item.view %></td>
                             <td><%= item.comments %></td>
                             <td><%= item.subcomments %></td>
                             <td><%= item.IsRec %></td>
+                            <td><a class="btn btn-danger btn-md" href="/manage/deleteHouse?id=<%= item._id %>" role="button">מחק</a></td>
                         </tr>
                     <% }); %>
                     

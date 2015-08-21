@@ -8,8 +8,8 @@ var session = require('express-session');
 var passport = require('passport');
 var flash = require('connect-flash');
 var morgan = require('morgan');
-
-
+var houses = require('./models/houses');
+var favicon = require('serve-favicon');
 
 //ANALYTICS =========================
 var ua = require('universal-analytics');
@@ -38,7 +38,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');//view engine setup
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -56,7 +56,17 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 //Locals
 app.locals.recom = require('./recommended.json');
 app.locals.homepath = path.join(__dirname, 'public');
+mongoose.model('houses').find(null, null, {sort: {'_id': -1}},function(err, hou){
+  app.locals.houses = hou;
+});
 
+function loadHouses (req, res, next) {
+   if (req.method === 'GET') { 
+      mongoose.model('houses').find(null, null, {sort: {'_id': -1}},function(err, hou){
+          app.locals.houses = hou;
+      });
+   } next() }
+   
 
 //Requiring routes
 var homepage = require('./routes/index');
@@ -70,6 +80,7 @@ admin.use(express.static(path.join(__dirname, 'public')));
 admin.use(flash()); // use connect-flash for flash messages stored in session
 
 
+app.use(loadHouses)
 app.use('/', homepage);
 app.use('/about', about);
 app.use('/board', board);

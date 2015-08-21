@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <% include templates/head.ejs%>
+        <link href="stylesheets/main.css" rel="stylesheet">
+        <style>
+            h1{
+                color:#5d5d5d;
+            }
+        </style>
+  </head>
+  <body>
+
+  <% include templates/header.ejs%>
+
+  <% include templates/adminMenu.ejs%>
+
+
+                
+<div class="container">
+
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>טבלת עובדים :</h1>
+            <div class="table-responsive">          
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>שם משתמש</th>
+                    <th>סיסמא</th>
+                    <th>שם מלא</th>
+                    <th>פלאפון</th>
+                    <th>הרשאות</th>
+                    <th>מחק</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                    <% users.forEach(function(item){ %>
+                        <tr>
+                            <td><%= item._id %></td>
+                            <td><%= item.username %></td>
+                            <td><%= item.password %></td>
+                            <td><%= item.name %></td>
+                            <td><%= item.phone %></td>
+                            <td><%= item.isadmin %></td>
+                            <td><a class="btn btn-danger btn-md" href="/manage/deleteUser?id=<%= item._id %>" role="button">מחק</a></td>
+                        </tr>
+                    <% }); %>
+                    
+                </tbody>
+              </table>
+              </div>
+        </div>
+    </div>
+</div>
+    <% include templates/footer.ejs%>
+
+
+  </body>
+</html>

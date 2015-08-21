@@ -38,31 +38,31 @@
                         <% for(var k=1; k<3; k++) {%>
                           <div class="col-md-6">
                               <!-- Begin Listing-->
-                              <% var propid = recom.recProperties[num].propertyID %>
-                              <% var img = "prop-images/" + (num) + "/1.jpg" %>
+                              <% var propid = houses[num]._id %>
+                              <% var img = "prop-images/" + propid + "/1.jpg" %>
                               <div class="bgc-fff btm-mrg-20 property-listing">
                                   <div class="property">
                                       <div class="property-img">
-                                          <a class="pull-right pad-0 no-of" href="/property?id=<%= recom.recProperties[num].propertyID %>" target="_parent">
+                                          <a class="pull-right pad-0 no-of" href="/property?id=<%= propid %>" target="_parent">
                                           <div class = "property-tag sale"></div>
-                                          <img alt="תמונה לא נמצאה" class="img-responsive" src="<%= img %>">
+                                          <img alt="תמונה לא נמצאה" class="img-responsive" src="<%= img %>" onerror="if (this.src != 'prop-images/0/1.jpg') this.src = 'prop-images/0/1.jpg';">
                                           </a>
                                       </div>
                                       <div class="clearfix visible-sm"></div>
                                       <div class="media-body fnt-smaller pad-10">
                                           <h4 class="media-heading">
-                                            <a href="/property?id=<%= recom.recProperties[num].propertyID %>" target="_parent"> <%= recom.recProperties[num].adress %> <small class="pull-left"><%= recom.recProperties[num].price %></small></a></h4>
+                                            <a href="/property?id=<%= propid %>" target="_parent"> <%= houses[num].adress %> <small class="pull-left"><%= houses[num].price %></small></a></h4>
                                           <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-                                              <li><%= recom.recProperties[num].roomnum %> חדרים</li>
+                                              <li><%= houses[num].roomnum %> חדרים</li>
                                               <li style="list-style: none">|</li>
-                                              <li><%= recom.recProperties[num].view %></li>
+                                              <li><%= houses[num].view %></li>
                                               <li style="list-style: none">|</li>
-                                              <li><%= recom.recProperties[num].size %> מ״ר</li>
+                                              <li><%= houses[num].size %> מ״ר</li>
                                           </ul>
                                           <p class="hidden-xs">
-                                              <%= recom.recProperties[num].comments %>
+                                              <%= houses[num].comments %>
                                           </p><span class="fnt-smaller fnt-lighter fnt-arial">
-                                              <%= recom.recProperties[num].subcomments %>
+                                              <%= houses[num].subcomments %>
                                           </span>
                                       </div>
                                   </div>

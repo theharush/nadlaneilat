@@ -169,23 +169,23 @@
           				    <div class="item">
           				  <% } %>
         				        
-        				        <% var img = "prop-images/" + (num) + "/1.jpg" %>
-            				    <img class = "slider-img" alt="תמונה לא נמצאה" src="<%= img %>"/>
+        				        <% var img = "prop-images/" + houses[num]._id + "/1.jpg" %>
+            				    <img class = "slider-img" alt="תמונה לא נמצאה" src="<%= img %>" onerror="if (this.src != 'prop-images/0/1.jpg') this.src = 'prop-images/0/1.jpg';"/>
                         <div class="carousel-caption carousel-captiontry camera_caption">
                             <h1 class="carousel-caption-header animated fadeInRight delay1">
-                                <%= recom.recProperties[num].adress %>
+                                <%= houses[num].adress %>
                             </h1><br><br>
                             <p class="carousel-caption-text animated fadeInRight delay2 hidden-xs">
                                 הערות:
-                                <%= recom.recProperties[num].comments %>
+                                <%= houses[num].comments %>
                             </p>
                             <ul class="animated fadeInRight delay3 hidden-xs">
-                                <li><span class="pad-right-10"><%= recom.recProperties[num].roomnum %></span><i class="fa fa-bed"></i></li>
-                                <li><span class="pad-right-10"><%= recom.recProperties[num].view %></span><i class="fa fa-binoculars"></i></li>
-                                <li><span class="pad-right-10"><%= recom.recProperties[num].price %></span>₪</li>
+                                <li><span class="pad-right-10"><%= houses[num].roomnum %></span><i class="fa fa-bed"></i></li>
+                                <li><span class="pad-right-10"><%= houses[num].view %></span><i class="fa fa-binoculars"></i></li>
+                                <li><span class="pad-right-10"><%= houses[num].price %></span>₪</li>
                             </ul>
                             <div class="more animated fadeInRight delay4 hidden-xs">
-                                <a href="/property?id=<%= recom.recProperties[num].propertyID %>" class="button">ראה עוד</a>
+                                <a href="/property?id=<%= houses[num]._id %>" class="button">ראה עוד</a>
                             </div>
                         </div>
                       </div>

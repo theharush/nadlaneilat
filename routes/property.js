@@ -1,10 +1,15 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
 
 router.get('/', function(req, res, next) {
-  console.log('Request URL:', req.originalUrl);
-  console.log('Request query:', req.query.id);
-  res.render('property', { housenum: req.query.id });
+  mongoose.model('houses').findOne({ '_id': req.query.id }, function(err, hou){
+        res.render('property.ejs', {
+            housenum: req.query.id,
+            house: hou,
+            title : 'דף ניהול'
+        });
+    });
 });
 
 

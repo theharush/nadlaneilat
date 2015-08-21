@@ -117,6 +117,43 @@
         </div>
     </section>  <!--end map -->
     
+    <section id="contact-page">
+        <div class="container">
+            <div class="center">        
+                <h2>השאר הודעה</h2>
+                <p class="lead">בעזרת הודעתך נוכל לעזור לך בכל נושא, ולמצוא את העסקה המתאימה.</p>
+            </div> 
+                <form method="post" action="/contact">
+                    <div class="col-sm-5 col-sm-offset-1">
+                        <div class="form-group">
+                            <label>שם *</label>
+                            <input type="text" name="fullname" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label>אימייל *</label>
+                            <input type="email" name="email" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label>טלפון</label>
+                            <input type="number" name="phone" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label>נושא *</label>
+                            <input type="text" name="subject" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label>גוף ההודעה *</label>
+                            <textarea name="message" id="message" required="required" class="form-control" rows="8"></textarea>
+                        </div>                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-lg">שלח הודעה</button>
+                        </div>
+                    </div>
+                </form> 
+        </div><!--/.container-->
+    </section><!--/#contact-page-->
 
     <% include templates/recSlideshow.ejs%>
     

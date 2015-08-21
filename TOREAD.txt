@@ -1,11 +1,13 @@
 ToDo's:
-    
-    mongodb
+
+    create dir, adding photos.
     multiple images
     email form
     domain
-    board page
     add real agent pics
+    all users form
+    show only to isadmin
+    remove/update houses.
 
     
 to enter shell:
@@ -44,3 +46,6 @@ getting a document:
     mongoose.model('houses').find(function(err, hou){
         console.log(hou);
     });
+    
+    
+    https://www.google.com/analytics/web/
