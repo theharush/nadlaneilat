@@ -35,30 +35,30 @@
                 <div class="col-sm-12 properties-header">
                         <span class="properties-subtitle">הצעות</span>
                         <br>
-                        <h1 class="properties-title">נכסינו האחרונים</h1>
+                        <h1 class="properties-title">נכסינו</h1>
                 </div>
             </div>
                 
             <div class="row">
 
-                 <% recom.recProperties.forEach(function(item){ %>
-                 <% var img = "prop-images/" + (item.propertyID - 1) + "/1.jpg" %>
+                 <% houses.forEach(function(item){ %>
+                 <% var img = "prop-images/" + item._id + "/1.jpg" %>
                           <div class="col-lg-4 col-sm-6 col-xs-12">
                               <!-- Begin Listing-->
-                              <% var propid = item.propertyID %>
-                              <% var img = "prop-images/" + (item.propertyID - 1) + "/1.jpg" %>
+                              <% var propid = item._id %>
+                              <% var img = "prop-images/" + (item._id - 1) + "/1.jpg" %>
                               <div class="bgc-fff btm-mrg-20 property-listing">
                                   <div class="property">
                                       <div class="property-img">
-                                          <a class="pull-right pad-0 no-of" href="/property?id=<%= item.propertyID %>" target="_parent">
+                                          <a class="pull-right pad-0 no-of" href="/property?id=<%= item._id %>" target="_parent">
                                           <div class = "property-tag sale"></div>
-                                          <img alt="תמונה לא נמצאה" class="img-responsive" src="<%= img %>">
+                                          <img alt="תמונה לא נמצאה" class="img-responsive" src="<%= img %>" onerror="if (this.src != 'prop-images/0/1.jpg') this.src = 'prop-images/0/1.jpg';">
                                           </a>
                                       </div>
                                       <div class="clearfix visible-sm"></div>
                                       <div class="media-body fnt-smaller pad-10">
                                           <h4 class="media-heading">
-                                            <a href="/property?id=<%= item.propertyID %>" target="_parent"> <%= item.adress %> <small class="pull-left"><%= item.price %></small></a></h4>
+                                            <a href="/property?id=<%= item._id %>" target="_parent"> <%= item.adress %> <small class="pull-left"><%= item.price %></small></a></h4>
                                           <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
                                               <li><%= item.roomnum %> חדרים</li>
                                               <li style="list-style: none">|</li>
