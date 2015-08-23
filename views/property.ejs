@@ -3,7 +3,7 @@
   <head>
     <title><%= house.adress %></title>
     <% include templates/head.ejs%>
-    <% var img = "prop-images/" + house.images[0] %>
+    <% var img = "https://s3.amazonaws.com/nadlaneilatimages" + house.images[0] %>
     
     <style>
       .featureimg{

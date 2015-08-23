@@ -6,8 +6,11 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
 var multer = require('multer');
-
-
+var s3 = require('multer-s3');
+var s3fs = require('s3fs');
+var fsImpl = new s3fs('nadlaneilatimages', { 
+                      accessKeyId: 'AKIAIBP24N763Y6Y42DA',
+                      secretAccessKey: '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' });
 //Get main Admin page
 router.get('/', isLoggedIn, function(req, res) {
     console.log("a Logged manager entered /manage");
@@ -125,14 +128,26 @@ router.get('/imgUpload', isLoggedIn, function(req, res) {
     })
 });
 
-var upload =  multer({
-            dest: path.join(__dirname, '/../public/prop-images'),
-            limits: {fileSize: 10000000, files:1} });
-          
-router.post('/upload', upload.single("image"), function(req, res) {
+
+// var upload =  multer({
+//             dest: path.join(__dirname, '/../public/prop-images'),
+//             limits: {fileSize: 10000000, files:1} });
+
+var uploadS3 = multer({
+  storage: s3({
+    dirname: '/prop-images',
+    bucket: 'nadlaneilatimages',
+    secretAccessKey: 'HfDeiycIQrtxi2WnrUxI1NOAuIteJ5zpxHjrqOTw',
+    accessKeyId: 'AKIAIBP24N763Y6Y42DA',
+    region: 'us-east-1'
+  }),
+  limits: {fileSize: 10000000, files:1}
+});
+
+router.post('/upload', uploadS3.single("image"), function(req, res) {
     mongoose.model('houses').findByIdAndUpdate(
         req.query.id,
-        {$push: {"images": req.file.filename}},
+        {$push: {"images": req.file.key}},
         {safe: true, upsert: true, new : true},
         function(err, model) {
           if(err)

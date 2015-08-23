@@ -45,3 +45,12 @@ getting a document:
     
     
     https://www.google.com/analytics/web/
+    
+    
+    
+S3 credintials:
+
+Access Key ID:
+AKIAIBP24N763Y6Y42DA
+Secret Access Key:
+HfDeiycIQrtxi2WnrUxI1NOAuIteJ5zpxHjrqOTw
