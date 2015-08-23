@@ -13,6 +13,7 @@ var housesSchema = new Schema({
   size: Number,
   comments: String,
   subcomments: String,
+  images: [String],
   IsRec: Boolean
 });
 

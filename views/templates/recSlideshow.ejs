@@ -44,8 +44,8 @@
                 
                 <% houses.forEach(function(item){ %>
                   <% if(item.IsRec) { %>
-                      <% var img = "prop-images/" + (item._id - 1) + "/1.jpg" %>
-                      
+                      <% var img = "prop-images/" + item.images[0] %>
+
                           <div class="owl-item darkCyan">
                             <div class="bgc-fff btm-mrg-20 property-listing">
                                   <div class="property <%= item._id %>">

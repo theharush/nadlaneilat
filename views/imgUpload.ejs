@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <% include templates/head.ejs%>
+    <style>
+      .mar-top{
+        margin-top:50px;
+      }
+    </style>
+  </head>
+  <body>
+
+<% include templates/header.ejs%>
+
+<% include templates/adminMenu.ejs %>
+
+<section id="contact-page" class="mar-top">
+        <div class="container">
+            <div class="center">        
+                <h2>הוספת תמונה ל- <%= house.adress %></h2>
+            </div> 
+            <div class="row contact-wrap center"> 
+                <form action="/manage/upload?id=<%= house._id %>" method="POST" enctype="multipart/form-data">
+                  <center><input type="file" name="image" class="btn btn-lg"> </center>
+                  <input type="submit" class="btn btn-primary btn-lg" value="שלח">
+                </form>
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section><!--/#contact-page-->
+
+    <% include templates/footer.ejs%>
+
+  </body>
+</html>

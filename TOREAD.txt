@@ -2,12 +2,8 @@ ToDo's:
 
     create dir, adding photos.
     multiple images
-    email form
     domain
     add real agent pics
-    all users form
-    show only to isadmin
-    remove/update houses.
 
     
 to enter shell:

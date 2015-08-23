@@ -5,6 +5,8 @@ var House = require('../models/houses');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
+var multer = require('multer');
+
 
 //Get main Admin page
 router.get('/', isLoggedIn, function(req, res) {
@@ -112,7 +114,39 @@ router.post('/signupform', passport.authenticate('local-signup', {
     failureRedirect : '/manage/signupform', // redirect back to the signup page if there is an error
     failureFlash : true // allow flash messages
 }));
-        
+   
+
+// IMAGE UPLOADS ============================
+router.get('/imgUpload', isLoggedIn, function(req, res) {
+    mongoose.model('houses').findById(req.query.id, function(err,house){
+        res.render('imgUpload.ejs', { title:"העלאת תמונה",
+                                      user : req.user,
+                                      house : house });
+    })
+});
+
+var upload =  multer({
+            dest: path.join(__dirname, '/../public/prop-images'),
+            limits: {fileSize: 10000000, files:1} });
+          
+router.post('/upload', upload.single("image"), function(req, res) {
+    mongoose.model('houses').findByIdAndUpdate(
+        req.query.id,
+        {$push: {"images": req.file.filename}},
+        {safe: true, upsert: true, new : true},
+        function(err, model) {
+          if(err)
+            console.log(err);
+        }
+    );
+    res.redirect('/manage');
+});
+
+
+
+
+
+//DELETES ====================================     
 router.get('/deleteHouse', isLoggedIn, function(req, res){
     mongoose.model('houses').find({ '_id': req.query.id }).remove().exec();
 
@@ -131,6 +165,7 @@ router.get('/deleteMessage', isLoggedIn, function(req, res){
     //houses.find({ id:333 }).remove().exec();
     res.redirect('/manage');
 });
+
 
 
         

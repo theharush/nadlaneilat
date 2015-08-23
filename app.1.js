@@ -11,13 +11,10 @@ var morgan = require('morgan');
 var houses = require('./models/houses');
 var favicon = require('serve-favicon');
 
-
-
 // //ANALYTICS =========================
 var ua = require('universal-analytics');
 var visitor = ua('UA-66530521-1');
 visitor.pageview("/", "Welcome", "http://joergtillmann.com").send();
-
 
 //DataBase
 mongoose.connect('mongodb://nadlaneilat:nadlan1234@ds033123.mongolab.com:33123/nadlaneilat');
