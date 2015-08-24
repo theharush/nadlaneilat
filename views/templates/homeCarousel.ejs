@@ -169,7 +169,7 @@
           				    <div class="item">
           				  <% } %>
         				        
-        				        <% var img = "prop-images/" + houses[num]._id + "/1.jpg" %>
+        				        <% var img = "https://s3.amazonaws.com/nadlaneilatimages" + houses[num].images[0]  %>
             				    <img class = "slider-img" alt="תמונה לא נמצאה" src="<%= img %>" onerror="if (this.src != 'prop-images/0/1.jpg') this.src = 'prop-images/0/1.jpg';"/>
                         <div class="carousel-caption carousel-captiontry camera_caption">
                             <h1 class="carousel-caption-header animated fadeInRight delay1">
