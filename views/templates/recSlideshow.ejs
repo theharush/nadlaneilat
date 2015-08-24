@@ -78,7 +78,12 @@
                                                   </div>
                                               </div>
                                           </p><span class="fnt-smaller fnt-lighter fnt-arial">
-                                              <%= item.subcomments %>
+                                              <% if(item.subcomments) {%>
+                                                <%= item.subcomments %>
+                                              <% } else { %>
+                                                אין הערות קטנות.
+                                              <% } %>
+                                              
                                           </span>
                                       </div>
                                   </div>
