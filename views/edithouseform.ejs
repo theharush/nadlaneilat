@@ -18,38 +18,42 @@
 <section id="contact-page" class="mar-top">
         <div class="container">
             <div class="center">        
-                <h2>הוספת בית</h2>
+                <h2>דף עריכת "<%= house.adress %>"</h2>
             </div> 
             <div class="row contact-wrap"> 
-                <form method="post" action="/manage/addhouseform">
+                <form method="post" action="/manage/edithouseform">
                     <div class="col-sm-5 col-sm-offset-1">
+                        <div class="form-group" style="display:none;">
+                            <label for="_id">_id</label>
+                            <input type="text" name="_id" id="_id" class="form-control" required="required" value="<%= house._id %>">
+                        </div>
                         <div class="form-group">
                             <label for="adress">כתובת</label>
-                            <input type="text" name="adress" id="adress" class="form-control" required="required">
+                            <input type="text" name="adress" id="adress" class="form-control" required="required" value="<%= house.adress %>">
                         </div>
                         <div class="form-group">
                             <label for="price">מחיר</label>
-                            <input type="number" name="price" id="price" class="form-control" required="required">
+                            <input type="number" name="price" id="price" class="form-control" required="required" value="<%= house.price %>">
                         </div>
                         <div class="form-group">
                             <label for="roomnum">מספר חדרים</label>
-                            <input type="number" class="form-control" name="roomnum" id="roomnum" required="required">
+                            <input type="number" class="form-control" name="roomnum" id="roomnum" required="required" value="<%= house.roomnum %>">
                         </div>
                         <div class="form-group">
                             <label for="size">גודל</label>
-                            <input type="number" class="form-control" name="size" id="size" required="required">
+                            <input type="number" class="form-control" name="size" id="size" required="required" value="<%= house.size %>">
                         </div>
                         <div class="form-group">
                             <label for="floor">קומה</label>
-                            <input type="number" class="form-control" name="floor" id="floor">
+                            <input type="number" class="form-control" name="floor" id="floor" value="<%= house.floor %>">
                         </div>
                         <div class="form-group">
                             <label for="view">נוף</label>
-                            <input type="text" name="view"  id="view" class="form-control">
+                            <input type="text" name="view"  id="view" class="form-control" value="<%= house.view %>">
                         </div>
                         <div class="form-group">
                             <label for="action">להשכרה? (ברירת מחדל היא מכירה)</label>
-                            <input type="checkbox" name="action" id="action" class="form-control">
+                            <input type="checkbox" name="action" id="action" class="form-control" >
                         </div>
                         <div class="form-group">
                             <label for="IsRec">למומלצים?</label>
@@ -60,14 +64,14 @@
                     <div class="col-sm-5">
                         <div class="form-group">
                             <label for="message">הערות</label>
-                            <textarea name="comments" id="comments" class="form-control" rows="8" ></textarea>
+                            <textarea name="comments" id="comments" class="form-control" rows="8"><%= house.comments %></textarea>
                         </div>      
                         <div class="form-group">
                             <label for="subcomments">תת-הערות</label>
-                            <textarea name="subcomments" id="subcomments" class="form-control " rows="3"></textarea>
+                            <textarea name="subcomments" id="subcomments" class="form-control " rows="3" ><%= house.subcomments %></textarea>
                         </div> 
                         <div class="form-group">
-                            <button type="submit" name="submit" class="btn btn-primary btn-lg"> הוסף בית</button>
+                            <button type="submit" name="submit" class="btn btn-primary btn-lg">עדכן</button>
                         </div>
                     </div>
                 </form> 

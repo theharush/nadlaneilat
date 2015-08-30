@@ -84,6 +84,7 @@ router.post('/addhouseform', function(req, res) {
                         newHouse.action = req.body.action;
                         newHouse.view = req.body.view;
                         newHouse.size = req.body.size;
+                        newHouse.floor = req.body.floor;
                         newHouse.comments = req.body.comments;
                         newHouse.subcomments = req.body.subcomments;
                         newHouse.IsRec = req.body.IsRec;
@@ -102,6 +103,80 @@ router.post('/addhouseform', function(req, res) {
             }
     });
 });
+
+//Get house adding form
+router.get('/edithouseform', isLoggedIn, function(req, res) {
+      mongoose.model('houses').findOne({ '_id': req.query.id }, function(err, hou){
+        res.render('edithouseform.ejs', {
+            user : req.user,
+            housenum: req.query.id,
+            house: hou,
+            title : 'ערוך בית'
+        });
+    });
+});
+
+router.post('/edithouseform', function(req, res) {
+        // asynchronous
+        process.nextTick(function() {
+            // if the user is not already logged in:
+            if (req.user) {
+                House.findOne({ '_id' :  req.body._id }, function(err, house) {
+                    // if there are any errors, return the error
+
+                    if (err){
+                        console.log("1")
+                        return;
+                    }
+
+                    // check to see if theres already a user with that username
+                    if (house) {
+                        house.adress = req.body.adress;
+                        house.price = req.body.price;
+                        house.roomnum = req.body.roomnum;
+                        house.action = req.body.action;
+                        house.view = req.body.view;
+                        house.size = req.body.size;
+                        house.floor = req.body.floor;
+                        house.comments = req.body.comments;
+                        house.subcomments = req.body.subcomments;
+                        house.IsRec = req.body.IsRec;
+                        house.save(function(err) {
+                            if (err) throw err;
+                            res.redirect('/manage');
+                        });
+                        
+                    } else {
+                        // create the user
+                        var newHouse = new House();
+
+                        newHouse.adress    = req.body.adress;
+                        newHouse.price = req.body.price;
+                        newHouse.roomnum = req.body.roomnum;
+                        newHouse.action = req.body.action;
+                        newHouse.view = req.body.view;
+                        newHouse.size = req.body.size;
+                        newHouse.floor = req.body.floor;
+                        newHouse.comments = req.body.comments;
+                        newHouse.subcomments = req.body.subcomments;
+                        newHouse.IsRec = req.body.IsRec;
+
+                        newHouse.save(function(err) {
+                            if (err) throw err;
+                            res.redirect('/manage');
+                        });
+                    }
+
+                });
+            // if the user is logged in but has no local account...
+            } else {
+                // user is logged in and already has a local account. Ignore signup. (You should log out before trying to create a new account, user!)
+                res.redirect('/');
+            }
+    });
+});
+
+
 
 // SIGNUP =================================
 // show the signup form

@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
         res.render('property.ejs', {
             housenum: req.query.id,
             house: hou,
-            title : 'דף ניהול'
+            title : 'דף בית'
         });
     });
 });

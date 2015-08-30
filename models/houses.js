@@ -11,6 +11,7 @@ var housesSchema = new Schema({
   action: Boolean,
   view: String,
   size: Number,
+  floor: Number,
   comments: String,
   subcomments: String,
   images: [String],

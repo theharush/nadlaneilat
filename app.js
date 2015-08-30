@@ -1,3 +1,4 @@
+//Requiring Node Modules ===================================
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
@@ -12,16 +13,9 @@ var houses = require('./models/houses');
 var favicon = require('serve-favicon');
 
 
-
-// //ANALYTICS =========================
-var ua = require('universal-analytics');
-var visitor = ua('UA-66530521-1');
-visitor.pageview("/", "Welcome", "http://joergtillmann.com").send();
-
-
-//DataBase
+//Setting up DB Connection  ===============================
 mongoose.connect('mongodb://nadlaneilat:nadlan1234@ds033123.mongolab.com:33123/nadlaneilat');
-//-->connection debug
+//-->Connection DEBUG
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function (callback) {
@@ -30,17 +24,16 @@ db.once('open', function (callback) {
 
 
 
-//pass passport for configuration
+//Configuring Passport ===============================
 require('./config/passport')(passport); // pass passport for configuration
 
 
-
+//Setting up Express Application  ===============================
 var app = express();
 
-//express application setup
+//--> setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');//view engine setup
-// uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -49,14 +42,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// required for passport
+// Passport Authentication initializing and setup =============================
 app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 
-//Locals
+//Local Variables  ===============================
 app.locals.recom = require('./recommended.json');
 app.locals.homepath = path.join(__dirname, 'public');
 mongoose.model('houses').find(null, null, {sort: {'_id': -1}},function(err, hou){
@@ -71,7 +64,7 @@ function loadHouses (req, res, next) {
    } next() }
    
 
-//Requiring routes
+//Requiring Express Routes  ===============================
 var homepage = require('./routes/index');
 var about = require('./routes/about');
 var board = require('./routes/board');
@@ -83,6 +76,7 @@ admin.use(express.static(path.join(__dirname, 'public')));
 admin.use(flash()); // use connect-flash for flash messages stored in session
 
 
+//Routing URLs  ===============================
 app.use(loadHouses)
 app.use('/', homepage);
 app.use('/about', about);
@@ -100,12 +94,20 @@ app.get('/logout', function(req, res) {
 });
 
 
+//ANALYTICS =========================
+var ua = require('universal-analytics');
+var visitor = ua('UA-66530521-1');
+visitor.pageview("/", "Welcome", "http://joergtillmann.com").send();
+
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
+
 
 // error handlers
 
