@@ -1,9 +1,8 @@
 var express = require('express');
-var mongoose = require('mongoose');
 var router = express.Router();
+var mongoose = require('mongoose');
 
-/* GET board page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     var adress=req.query.adress;
     var price=parseInt(req.query.price) + 1;
     var roomnum=req.query.roomnum;
@@ -19,9 +18,9 @@ router.get('/', function(req, res, next) {
     console.log(query);
     mongoose.model('houses').find(query, function(err, hou){
         res.render('board', { title: 'Board',
-                              query: query,
                               properties: hou});
     });
 });
 
 module.exports = router;
+

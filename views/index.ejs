@@ -13,6 +13,14 @@
       // ga('send', 'pageview');
     
     </script>
+    <style>
+      .search-bar .form-inline .form-group{
+        width:100%;
+      }
+      .search-bar .form-inline{
+          background: #5c5c5c;    
+      }
+    </style>
   </head>
   <body>
 
@@ -20,7 +28,7 @@
     
     <% include templates/homeCarousel.ejs%>
 
-
+      
  <div class="container-fluid properties-container" >
         <div class="container container-pad" id="property-listings">
             <div class="row">
@@ -76,7 +84,35 @@
             </div><!-- End row -->
         </div><!-- End container -->
 
-    
+    <div class="container search-bar hidden-md hidden-lg hidden-xl">
+          <div class="row" style="background:#fff; margin-top:20px;">
+            <div class="col-sm-12 properties-header">
+                    <span class="properties-subtitle">חסוך זמן</span>
+                    <br>
+                    <h1 class="properties-title"> חיפוש מותאם</h1>
+            </div>
+        </div>
+        <div class="row">
+            <form class="form-inline" role="form" action="/board">
+              <div class="form-group">
+                <label for="adress">כתובת</label>
+                <input type="text" class="form-control" id="adress" name="adress" >
+              </div>
+              <div class="form-group">
+                <label for="price">תקציב</label>
+                <input type="number" class="form-control" id="price" name="price">
+              </div>
+              <div class="form-group">
+                <label for="roomnum">מס׳ חדרים</label>
+                <input type="number" class="form-control" id="roomnum" name="roomnum" >
+                                                                                    
+              </div>
+              <button type="submit" class="btn btn-default">חפש</button>
+            </form>
+        </div>
+      </div>
+      
+      
     <% include templates/recSlideshow.ejs%>
 
     

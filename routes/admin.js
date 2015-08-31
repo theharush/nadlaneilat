@@ -11,7 +11,14 @@ var s3fs = require('s3fs');
 var fsImpl = new s3fs('nadlaneilatimages', { 
                       accessKeyId: 'AKIAIBP24N763Y6Y42DA',
                       secretAccessKey: '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' });
-//Get main Admin page
+     
+     
+                      
+//=======================================================
+// GET REQUEST ==========================================
+//=======================================================
+                    
+//Admin homepage
 router.get('/', isLoggedIn, function(req, res) {
     console.log("a Logged manager entered /manage");
     mongoose.model('houses').find(null, null, {sort: {'_id': -1}},function(err, hou){
@@ -24,6 +31,8 @@ router.get('/', isLoggedIn, function(req, res) {
     });
 });
 
+
+//Workers Table
 router.get('/workers', isLoggedIn, function(req, res) {
     console.log("a Logged manager entered /manage");
     mongoose.model('User').find(null, null, {sort: {'_id': -1}},function(err, users){
@@ -36,6 +45,8 @@ router.get('/workers', isLoggedIn, function(req, res) {
     });
 });
 
+
+//Messeges Table
 router.get('/messages', isLoggedIn, function(req, res) {
     console.log("a Logged manager entered /manage");
     mongoose.model('Message').find(null, null, {sort: {'_id': -1}},function(err, users){
@@ -49,7 +60,7 @@ router.get('/messages', isLoggedIn, function(req, res) {
 });
 
 
-//Get house adding form
+//House adding form
 router.get('/addhouseform', isLoggedIn, function(req, res) {
     res.render('addhouseform.ejs', {
         user : req.user,
@@ -57,6 +68,44 @@ router.get('/addhouseform', isLoggedIn, function(req, res) {
     });
 });
 
+
+//house editing form
+router.get('/edithouseform', isLoggedIn, function(req, res) {
+      mongoose.model('houses').findOne({ '_id': req.query.id }, function(err, hou){
+        res.render('edithouseform.ejs', {
+            user : req.user,
+            housenum: req.query.id,
+            house: hou,
+            title : 'ערוך בית'
+        });
+    });
+});
+
+
+//SignUp form
+router.get('/signupform', isLoggedIn, function(req, res) {
+    res.render('signup.ejs', { message: req.flash('signupMessage'), 
+                               title:"רישום עובדים",
+                               user : req.user});
+});
+
+
+//Upload Image
+router.get('/imgUpload', isLoggedIn, function(req, res) {
+    mongoose.model('houses').findById(req.query.id, function(err,house){
+        res.render('imgUpload.ejs', { title:"העלאת תמונה",
+                                      user : req.user,
+                                      house : house });
+    })
+});
+
+
+
+//=======================================================
+// POST REQUEST ==========================================
+//=======================================================
+
+//add house
 router.post('/addhouseform', function(req, res) {
         // asynchronous
         process.nextTick(function() {
@@ -104,18 +153,8 @@ router.post('/addhouseform', function(req, res) {
     });
 });
 
-//Get house adding form
-router.get('/edithouseform', isLoggedIn, function(req, res) {
-      mongoose.model('houses').findOne({ '_id': req.query.id }, function(err, hou){
-        res.render('edithouseform.ejs', {
-            user : req.user,
-            housenum: req.query.id,
-            house: hou,
-            title : 'ערוך בית'
-        });
-    });
-});
 
+//edit house
 router.post('/edithouseform', function(req, res) {
         // asynchronous
         process.nextTick(function() {
@@ -178,36 +217,17 @@ router.post('/edithouseform', function(req, res) {
 
 
 
-// SIGNUP =================================
-// show the signup form
-router.get('/signupform', isLoggedIn, function(req, res) {
-    res.render('signup.ejs', { message: req.flash('signupMessage'), 
-                               title:"רישום עובדים",
-                               user : req.user});
-});
-
-// process the signup form
+//signup form
 router.post('/signupform', passport.authenticate('local-signup', {
     successRedirect : '/manage/workers', // redirect to the secure manage section
     failureRedirect : '/manage/signupform', // redirect back to the signup page if there is an error
     failureFlash : true // allow flash messages
 }));
    
-
-// IMAGE UPLOADS ============================
-router.get('/imgUpload', isLoggedIn, function(req, res) {
-    mongoose.model('houses').findById(req.query.id, function(err,house){
-        res.render('imgUpload.ejs', { title:"העלאת תמונה",
-                                      user : req.user,
-                                      house : house });
-    })
-});
-
-
-// var upload =  multer({
-//             dest: path.join(__dirname, '/../public/prop-images'),
-//             limits: {fileSize: 10000000, files:1} });
-
+   
+   
+   
+//upload IMG
 var uploadS3 = multer({
   storage: s3({
     dirname: '/prop-images',
@@ -235,30 +255,29 @@ router.post('/upload', uploadS3.single("image"), function(req, res) {
 
 
 
-
-//DELETES ====================================     
+//=======================================================
+// DELETES ==============================================
+//=======================================================
 router.get('/deleteHouse', isLoggedIn, function(req, res){
     mongoose.model('houses').find({ '_id': req.query.id }).remove().exec();
-
-    //houses.find({ id:333 }).remove().exec();
     res.redirect('/manage');
 });
+
 router.get('/deleteUser', isLoggedIn, function(req, res){
     mongoose.model('User').find({ '_id': req.query.id }).remove().exec();
-
-    //houses.find({ id:333 }).remove().exec();
     res.redirect('/manage');
 });
+
 router.get('/deleteMessage', isLoggedIn, function(req, res){
     mongoose.model('Message').find({ '_id': req.query.id }).remove().exec();
-
-    //houses.find({ id:333 }).remove().exec();
     res.redirect('/manage');
 });
 
 
 
-        
+//=======================================================
+// functions ==========================================
+//=======================================================  
 // route middleware to check user is not logged in
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())

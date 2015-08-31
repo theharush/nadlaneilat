@@ -163,25 +163,18 @@
                             <div class="row bg_header">
                                 <div class="clearfix"></div>
                                    <div class="search_box">
-                                        <form action="/search">
+                                        <form action="/board">
                                             <h2>חיפוש</h2>
                                             <div class="">
                                                 <label>כתובת</label>
-                                                <input type="text">
+                                                <input type="text" name="adress">
                                             <div>
-                                                <label>טווח מחירים</label>                                     
-                                                <select name="pricing">
-                                                      <option>ראה הכל</option>                                  
-                                                    <option value="info_price">0 - 300.000</option>
-                                                    <option value="info_price">300.000 - 500.000</option>
-                                                    <option value="info_price">500.000 - 800.000</option>
-                                                    <option value="info_price">800.000 - 1.000.000</option>
-                                                    <option value="info_price">10.000.000 +</option>    
-                                                </select>
+                                                <label>מחיר מקסימאלי</label>                                     
+                                                <input type="Number" name="price">
                                             </div>
                                             <div>
                                                 <label>מס׳ חדרים</label>
-                                                <input type="Number">
+                                                <input type="Number" name="roomnum">
                                             </div>
                                             <div class="btndiv">
                                                <button type="submit" name="submit" class="btn btn-primary btn-lg">חפש</button>
@@ -218,7 +211,7 @@
           				  <% } %>
         				        
         				        <% var img = "https://s3.amazonaws.com/nadlaneilatimages" + houses[num].images[0]  %>
-            				    <img class = "slider-img" alt="תמונה לא נמצאה" src="<%= img %>" onerror="if (this.src != 'prop-images/0/1.jpg') this.src = 'prop-images/0/1.jpg';"/>
+            				    <img class = "slider-img" alt="תמונה לא נמצאה" src="<%= img %>" onerror="if (this.src != '/images/slider/bg1.jpg') this.src = '/images/slider/bg1.jpg';"/>
                         <div class="carousel-caption carousel-captiontry camera_caption">
                             <h1 class="carousel-caption-header animated fadeInRight delay1">
                                 <%= houses[num].adress %>

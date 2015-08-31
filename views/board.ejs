@@ -3,13 +3,7 @@
   <head>
     <title><%= title %></title>
     <% include templates/head.ejs%>
-  </head>
-  <body>
-
-    <% include templates/header.ejs%>
-    
-    
-  <style type="text/css">
+      <style type="text/css">
 
         .property{
             min-height:150px;
@@ -17,7 +11,7 @@
         .top-bar{
             display:none;
         }
-        .container{
+        .properties-container{
             width:95%;
         }
    
@@ -26,11 +20,62 @@
           max-width: 180px;
           height: 150px;
         }
+        
+
+        .about{
+            margin-bottom:-1px;
+        }
 
     </style>
     
+  </head>
+  <body style = "padding-top: 94px;     background-color: #e5e5e5;">
+
+    <% include templates/header.ejs%>
+    
+    <div class="section-title about">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8">
+            <h1>נכסים
+              <span>
+                <a href="index.html">בית </a>
+                / לוח נכסים
+              </span>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="container search-bar">
+        <div class="row">
+            <form class="form-inline" role="form" action="/board">
+              <div class="form-group">
+                <label for="adress">כתובת</label>
+                <input type="text" class="form-control" id="adress" name="adress" <% if(query.adress) { %> 
+                                                                                    value="<%= query.adress.toString().slice(1, -2) %>"
+                                                                                    <% } %> >
+              </div>
+              <div class="form-group">
+                <label for="price">תקציב</label>
+                <input type="number" class="form-control" id="price" name="price" <% if(query.price) { %> 
+                                                                                    value="<%= parseInt(query.price.$lt) -1 %>"  
+                                                                                    <% } %> >
+              </div>
+              <div class="form-group">
+                <label for="roomnum">מס׳ חדרים</label>
+                <input type="number" class="form-control" id="roomnum" name="roomnum" <% if(query.roomnum) { %> 
+                                                                                    value="<%= query.roomnum %>"
+                                                                                    <% } %> >
+                                                                                    
+              </div>
+              <button type="submit" class="btn btn-default">חפש</button>
+            </form>
+        </div>
+      </div>
     <div class="container-fluid properties-container" >
-        <div class="container container-pad" id="property-listings">
+        <div class="container container-pad properties-container" id="property-listings">
             <div class="row">
                 <div class="col-sm-12 properties-header">
                         <span class="properties-subtitle">הצעות</span>
@@ -41,7 +86,7 @@
                 
             <div class="row">
 
-                 <% houses.forEach(function(item){ %>
+                 <% properties.forEach(function(item){ %>
                   <% var img = "https://s3.amazonaws.com/nadlaneilatimages" + item.images[0] %>
                           <div class="col-lg-4 col-sm-6 col-xs-12">
                               <!-- Begin Listing-->

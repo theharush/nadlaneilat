@@ -10,6 +10,10 @@
 /*************************
 *******Typography******
 **************************/
+html {
+    position: relative;
+    min-height: 100%;
+}
 
 body {
   background: #fff;
@@ -284,7 +288,41 @@ hr {
   }  
   }
 
-
+        .search-bar .form-inline{
+            font-weight: lighter;
+            color: #333333;
+            background: #000;
+            background: rgba(0,0,0,0.6);
+            padding: 20px;
+            width: 100%;
+            background: url("/images/slider/bg4.jpg");
+            padding: 10px 20px;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            background-position: center center;
+        }
+        
+        .search-bar .form-inline label {
+            color:#fafafa;
+            font-size:1.5em;
+        }
+        .search-bar .form-inline .form-group{
+            min-width:calc(33.33333% - (100% /250));
+        }
+        .search-bar .form-inline .btn{
+            width:100%;
+            margin-top:20px;
+            margin-bottom:20px;
+            font-size: 1.4em;
+        }
+        .search-bar .form-group .form-control{
+            width:100%;
+        }
+        .search-bar{
+            width:100%;
+        }
+        
 .rent{
   background: url("/images/for_rent.png") no-repeat;
 }
@@ -3454,6 +3492,8 @@ a {
 
 body{
       padding-top:90px;
+      padding-bottom:200px;
+      
     }
 
 
