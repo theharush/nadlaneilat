@@ -2940,11 +2940,155 @@ shortcodes page css
         	padding-left: 15%;
         	padding-right: 15%;
         }
+        .more .button {
+          width: auto;
+          border: 0;
+          color: #fff;
+          font-style: italic;
+          margin: 10px 0;
+          -webkit-transition: 0.3s all ease;
+          -moz-transition: 0.3s all ease;
+          -o-transition: 0.3s all ease;
+          -ms-transition: 0.3s all ease;
+          transition: 0.3s all ease;
+            
+          padding: 10px 30px;
+          font-size: 18px;
+          font-weight: bold;
+          border-right: 5px solid #000;
+        }
+        
+        .camera_caption h1 {
+          text-align: right;
+          float: right;
+          margin-top: 13%;
+          padding: 15px 20px;
+          display: block;
+          max-width: 550px;
+          color: #fff;
+          font-size: 42px;
+          line-height: 52px;
+          color: #fff;
+          border-right: 5px solid #000;
+          position: relative;
+        }
+        
+        .camera_caption h1:before {
+          -webkit-transition-duration: 0.3s;
+          content: '';
+          border-style: solid;
+          border-width: 81px 70px 0 0;
+          left: -70px;
+          position: absolute;
+          top: -webkit-calc(50% - 40px);
+          border-color: transparent #F68621 transparent transparent;
+        }
+        
+        .camera_caption p {
+            border-left: 5px solid #F68621;
+            color: #fff;
+            font-size: 15px;
+            line-height: 28px;
+            font-weight: normal;
+            max-width: 500px;
+            padding: 10px;
+            text-align: right;
+            background: #000;
+            background: rgba(0,0,0,0.8);
+            margin-top: 70px;
+        }
+        .camera_caption ul {
+          list-style: none;
+          margin: 0;
+          text-align: right;
+          width: 80%;
+          margin-right: -40px;
+          margin-top:20px;
+        }
+        .camera_caption ul li {
+          display: inline-block;
+          padding: 10px 20px 10px 35px;
+          background: #000;
+          background: rgba(0,0,0,0.8);
+          margin-left: 10px;
+          text-align: right;
+          color: #fff;
+        }
+        .camera_caption .more {
+          float: right;
+          margin: 0;
+          text-align: right;
+          width: 100%;
+          margin-top: 30px;
+        }
+
+        .camera_caption p, .camera_caption ul li {
+          border-left: 5px solid #F68621;
+        }
+        
         .transition-timer-carousel .carousel-caption .carousel-caption-header {
         	margin-top: 10px;
         	font-size: 24px;
         }
-        
+         @media (max-width: 767px) {
+          .transition-timer-carousel .carousel-caption .carousel-caption-header {
+          	font-size: 18px;
+          	line-height: 20px;
+          }
+          .camera_caption h1:before {
+            -webkit-transition-duration: 0.3s;
+            content: '';
+            border-style: solid;
+            border-width: 50px 40px 0 0;
+            left: -40px;
+            position: absolute;
+            top: -webkit-calc(50% - 25px);
+            border-color: transparent #F68621 transparent transparent;
+          }
+          
+           .camera_caption p {
+            border-left: 5px solid #F68621;
+            color: #fff;
+            font-size: 15px;
+            line-height: 28px;
+            font-weight: normal;
+            max-width: 500px;
+            padding: 10px;
+            text-align: right;
+            background: #000;
+            background: rgba(0,0,0,0.8);
+            margin-top: 30px;
+        }
+         }
+        @media (max-width:400px) {
+          .hidden-xxxs{
+            display:none!important;
+          }
+          .camera_caption .more {
+              float: right;
+              margin: 0;
+              text-align: right;
+              width: 100%;
+              margin-top: 10px;
+          }
+
+          .more .button {
+              width: auto;
+              border: 0;
+              color: #fff;
+              font-style: italic;
+              margin: 10px 0;
+              padding: 4px 17px;
+              font-size: 13px;
+              font-weight: bold;
+              border-right: 5px solid #000;
+          }
+        }
+        @media (max-width:650px) {
+          .hidden-xxs{
+            display:none!important;
+          }
+        }
         @media (min-width: 970px) {
             /* Lower the font size of the carousel caption header so that our caption
             doesn't take up the full image/slide on smaller screens */
@@ -3241,6 +3385,7 @@ shortcodes page css
           .timeline > li .line {
             display: none;
           }
+
 }
 
 /**** BASE ****/

@@ -18,91 +18,6 @@
         	padding-right: 10%;
         }
         
-        .camera_caption h1 {
-          text-align: right;
-          float: right;
-          margin-top: 13%;
-          padding: 15px 20px;
-          display: block;
-          max-width: 550px;
-          color: #fff;
-          font-size: 42px;
-          line-height: 52px;
-          color: #fff;
-          border-right: 5px solid #000;
-          position: relative;
-        }
-        
-        .camera_caption h1:before {
-          -webkit-transition-duration: 0.3s;
-          content: '';
-          border-style: solid;
-          border-width: 81px 70px 0 0;
-          left: -70px;
-          position: absolute;
-          top: -webkit-calc(50% - 40px);
-          border-color: transparent #F68621 transparent transparent;
-        }
-        
-        .camera_caption p {
-            border-left: 5px solid #F68621;
-            color: #fff;
-            font-size: 15px;
-            line-height: 28px;
-            font-weight: normal;
-            max-width: 580px;
-            padding: 10px;
-            text-align: right;
-            background: #000;
-            background: rgba(0,0,0,0.8);
-            margin-top: 70px;
-        }
-        .camera_caption ul {
-          list-style: none;
-          margin: 0;
-          text-align: right;
-          width: 80%;
-          margin-right: -40px;
-          margin-top:20px;
-        }
-        .camera_caption ul li {
-          display: inline-block;
-          padding: 10px 20px 10px 35px;
-          background: #000;
-          background: rgba(0,0,0,0.8);
-          margin-left: 10px;
-          text-align: right;
-          color: #fff;
-        }
-        .camera_caption .more {
-          float: right;
-          margin: 0;
-          text-align: right;
-          width: 100%;
-          margin-top: 30px;
-        }
-
-        .camera_caption p, .camera_caption ul li {
-          border-left: 5px solid #F68621;
-        }
-        
-        .more .button {
-          width: auto;
-          border: 0;
-          color: #fff;
-          font-style: italic;
-          margin: 10px 0;
-          -webkit-transition: 0.3s all ease;
-          -moz-transition: 0.3s all ease;
-          -o-transition: 0.3s all ease;
-          -ms-transition: 0.3s all ease;
-          transition: 0.3s all ease;
-            
-          padding: 10px 30px;
-          font-size: 18px;
-          font-weight: bold;
-          border-right: 5px solid #000;
-        }
         
         .delay1 {
           animation-delay: 100ms;
@@ -130,24 +45,157 @@
         .property{
             min-height:150px;
         }
-        .asd{
-            position: absolute;
-            top: 50%;
-            z-index: 5;
-            display: inline-block;
+        
+
+        
+/* Tabs  ----------------------------*/
+        .bg_header{
+        	position: absolute;
+        	margin-top: 12%;
+        	width: 100%;
+        	max-width: 420px;
+        	z-index: 2;
+        	left: 30px;
         }
-        .glyphicon-chevron-right:before {
-          content: "";
+        
+        .search_box{
+              background: #000;
+            background: rgba(0,0,0,0.8);
+            width: 100%;
+            max-width: 450px;
+            padding: 15px 5%;
+                height:auto;
         }
-        .glyphicon-chevron-left:before {
-          content: "";
-        }
+        
+.tabs_services{	
+	padding: 0;
+	margin-bottom: 5px;
+}
+.tabs_services li{
+	display: inline-block;	
+	font-size: 14px;
+	font-weight: lighter;	
+	background: #000;
+	background: rgba(0,0,0,0.8);
+	padding: 5px 15px;		
+	list-style: none
+}
+.tabs_services li a{	
+	cursor: pointer;	
+	color: #fff;
+}
+.switcher-content {
+  display: none !important;
+}
+.show-switcher{
+	display: block;
+}
+.switcher-panel{
+	padding: 0 0 0;
+}
+.divisor_services{
+	margin:0;
+}
+.search_box input,
+.filter_horizontal input{
+	width: 100%;
+	background: #fff;
+	border-radius: 0;
+	color: #222;	
+	height: 35px;
+	font-size: 14px;
+	margin-top: 2px;
+	padding: 5px;
+}
+.search_box label{
+	color: #fff;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 23px;
+	padding: 5px 0 0 0;
+}
+.search_box h2{
+	color: #fff;
+	font-weight: normal;
+	font-size: 22px;
+	line-height: 23px;
+	padding: 5px 0 0 0;
+	margin-top:0px;
+}
+.search_box .btn{
+  margin-top:20px;
+  text-align:left;
+}
+.search_box select,
+.filter_horizontal select{
+	background-color: #fff;
+	color: #222;
+	width: 100%;
+	border-radius: 0;
+	border: 1px solid #dedede;
+	font-size: 14px;
+	height: 35px;
+}
+
+.search-container{
+  width:80%;
+}
+
+.btndiv{
+  width:100%;
+  direction:ltr;
+  text-align:left;
+}
+
+
+
+
     </style>
-    
+
     
     
     <div class="container carousel-container">
         <div class="row">
+          
+          <div class="container search-container hidden-sm hidden-xs">
+                    <div class="row">
+                        <div class="col-md-5 col-md-offset-7">                        
+                            <div class="row bg_header">
+                                <div class="clearfix"></div>
+                                   <div class="search_box">
+                                        <form action="/search">
+                                            <h2>חיפוש</h2>
+                                            <div class="">
+                                                <label>כתובת</label>
+                                                <input type="text">
+                                            <div>
+                                                <label>טווח מחירים</label>                                     
+                                                <select name="pricing">
+                                                      <option>ראה הכל</option>                                  
+                                                    <option value="info_price">0 - 300.000</option>
+                                                    <option value="info_price">300.000 - 500.000</option>
+                                                    <option value="info_price">500.000 - 800.000</option>
+                                                    <option value="info_price">800.000 - 1.000.000</option>
+                                                    <option value="info_price">10.000.000 +</option>    
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label>מס׳ חדרים</label>
+                                                <input type="Number">
+                                            </div>
+                                            <div class="btndiv">
+                                               <button type="submit" name="submit" class="btn btn-primary btn-lg">חפש</button>
+                                            </div> 
+                                        </form>                               
+                                    </div>   
+                                </div>
+                                <!-- End 1-content -->
+                            </div>       
+                        </div>
+                    </div>
+                </div>
+                
+                
             <!-- The carousel -->
         <div id="transition-timer-carousel" class="carousel slide transition-timer-carousel" data-ride="carousel">
     			<!-- Indicators -->
@@ -175,16 +223,16 @@
                             <h1 class="carousel-caption-header animated fadeInRight delay1">
                                 <%= houses[num].adress %>
                             </h1><br><br>
-                            <p class="carousel-caption-text animated fadeInRight delay2 hidden-xs">
+                            <p class="carousel-caption-text animated fadeInRight delay2 hidden-xxxs">
                                 הערות:
                                 <%= houses[num].comments %>
                             </p>
-                            <ul class="animated fadeInRight delay3 hidden-xs">
+                            <ul class="animated fadeInRight delay3 hidden-xxs">
                                 <li><span class="pad-right-10"><%= houses[num].roomnum %></span><i class="fa fa-bed"></i></li>
                                 <li><span class="pad-right-10"><%= houses[num].view %></span><i class="fa fa-binoculars"></i></li>
                                 <li><span class="pad-right-10"><%= houses[num].price %></span>₪</li>
                             </ul>
-                            <div class="more animated fadeInRight delay4 hidden-xs">
+                            <div class="more animated fadeInRight delay4">
                                 <a href="/property?id=<%= houses[num]._id %>" class="button">ראה עוד</a>
                             </div>
                         </div>
@@ -197,10 +245,10 @@
     
     			<!-- Controls -->
     			<a class="left carousel-control" href="#transition-timer-carousel" data-slide="next">
-    				<span class="glyphicon glyphicon-chevron-left" style="content: 0;"><i class="fa fa-backward asd"></i></span>
+    				<span class="glyphicon glyphicon-chevron-left"></span>
     			</a>
     			<a class="right carousel-control" href="#transition-timer-carousel" data-slide="prev">
-    				<span class="glyphicon glyphicon-chevron-right" style="content: 0;"><i class="fa fa-forward asd"></i></span>
+    				<span class="glyphicon glyphicon-chevron-right"></span>
     			</a>
                 
                 <!-- Timer "progress bar" -->
