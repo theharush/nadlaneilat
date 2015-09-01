@@ -590,7 +590,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f3f3f', end
 
  .navbar-nav{
   margin-top: 12px;
-  padding: 10px 0px;
+  padding: 10px 20px;
  }
 
 .navbar-nav>li{
@@ -902,6 +902,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f3f3f', end
   -webkit-box-shadow: inset 0 0 0 5px #F68620;
   border: 3px solid #F68620;
 }
+
+      .contactlink{
+        background:#fafafa;
+        border-top:solid 5px #F68620;
+        border-bottom:solid 3px #999999;
+        height:50px;
+        text-align:center;
+        line-height:45px;
+      }
+      .contactlink p{
+        font-size:1.4em;
+      }
 
 #recent-works .col-xs-12.col-sm-4.col-md-3{
   padding: 0;
