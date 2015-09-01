@@ -94,13 +94,6 @@ app.get('/logout', function(req, res) {
 });
 
 
-//ANALYTICS =========================
-var ua = require('universal-analytics');
-var visitor = ua('UA-66530521-1');
-visitor.pageview("/", "Welcome", "http://joergtillmann.com").send();
-
-
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
