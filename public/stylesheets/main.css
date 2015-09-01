@@ -112,6 +112,12 @@ hr {
   margin-top:0;
 }
 
+.lighter-grey{
+  background: #fafafa;
+  background-color: #fafafa;
+
+}
+
 .properties-header{
   margin-bottom:30px;
 }
@@ -291,20 +297,21 @@ hr {
         .search-bar .form-inline{
             font-weight: lighter;
             color: #333333;
-            background: #000;
-            background: rgba(0,0,0,0.6);
             padding: 20px;
             width: 100%;
-            background: url("/images/slider/bg4.jpg");
+            background: #ECECEC;    
             padding: 10px 20px;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             background-size: cover;
             background-position: center center;
+            border-bottom: 5px solid #F68620;
+            border-top: 3px solid #F68620;
+        
         }
         
         .search-bar .form-inline label {
-            color:#fafafa;
+            color:#5F5F5F;
             font-size:1.5em;
         }
         .search-bar .form-inline .form-group{
@@ -318,6 +325,8 @@ hr {
         }
         .search-bar .form-group .form-control{
             width:100%;
+            border: 1px solid #C1C1C1;
+            border-bottom: 3px solid #F68620;
         }
         .search-bar{
             width:100%;
@@ -3492,7 +3501,7 @@ a {
 
 body{
       padding-top:90px;
-      padding-bottom:200px;
+      padding-bottom:300px;
       
     }
 
