@@ -11,7 +11,7 @@ var flash = require('connect-flash');
 var morgan = require('morgan');
 var houses = require('./models/houses');
 var favicon = require('serve-favicon');
-
+var device = require('express-device');
 
 //Setting up DB Connection  ===============================
 mongoose.connect('mongodb://nadlaneilat:nadlan1234@ds033123.mongolab.com:33123/nadlaneilat');
@@ -40,6 +40,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(device.capture());
+device.enableDeviceHelpers(app)
 
 
 // Passport Authentication initializing and setup =============================
