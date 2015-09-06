@@ -914,6 +914,44 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f3f3f', end
       .contactlink p{
         font-size:1.4em;
       }
+      
+      
+        .service-icon a {
+            position: relative;
+            display: block;
+            width: 180px;
+            height: 180px;
+            margin-left: auto;
+            margin-right: auto;
+            background: #F68620;
+            border: 8px solid #fff;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            -ms-border-radius: 100%;
+            -o-border-radius: 100%;
+            border-radius: 100%;
+        }
+        .service-icon a > i {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 45px;
+            height: 45px;
+            margin-top: -50px;
+            font-size: 100px;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .service-content {
+            text-align: center;
+        }
+        .service-content h3 {
+            font-size: 24px;
+            line-height: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
 
 #recent-works .col-xs-12.col-sm-4.col-md-3{
   padding: 0;
