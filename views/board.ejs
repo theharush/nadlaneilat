@@ -95,7 +95,11 @@
                                   <div class="property">
                                       <div class="property-img">
                                           <a class="pull-right pad-0 no-of" href="/property?id=<%= item._id %>" target="_parent">
-                                          <div class = "property-tag sale"></div>
+                                            <% if(item.action == true) { %>
+                                                <div class = "property-tag rent"></div>
+                                              <% } else { %>
+                                                <div class = "property-tag sale"></div>
+                                              <% } %>
                                           <img alt="תמונה לא נמצאה" class="img-responsive" src="<%= img %>" onerror="if (this.src != 'prop-images/0/1.jpg') this.src = 'prop-images/0/1.jpg';">
                                           </a>
                                       </div>
