@@ -5,13 +5,14 @@ var Schema = mongoose.Schema;
 
 // create a schema
 var housesSchema = new Schema({
-  adress: { type: String, required: true },
+  adress: { type: String, required: true, unique: false },
   price: { type: Number, required: true },
   roomnum: Number,
   action: Boolean,
-  view: String,
+  view: { type: String, required: false, default: 'לא צויין'},
   size: Number,
   floor: Number,
+  housetype: String,
   comments: String,
   subcomments: String,
   images: [String],

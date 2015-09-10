@@ -9,7 +9,7 @@
       }
     </style>
   </head>
-  <body>
+  <body >
 
 <% include templates/header.ejs%>
 
@@ -53,15 +53,33 @@
                         </div>
                         <div class="form-group">
                             <label for="action">להשכרה? (ברירת מחדל היא מכירה)</label>
-                            <input type="checkbox" name="action" id="action" class="form-control" >
+                            <% if(house.action == true) { %>
+                                <input type="checkbox" name="action" id="action" class="form-control" checked="checked">
+                              <% } else { %>
+                                <input type="checkbox" name="action" id="action" class="form-control">
+                            <% } %>
                         </div>
                         <div class="form-group">
                             <label for="IsRec">למומלצים?</label>
-                            <input type="checkbox" name="IsRec" id="IsRec" class="form-control">
+                             <% if(house.IsRec == true) { %>
+                                <input type="checkbox" name="IsRec" id="IsRec" class="form-control" checked="checked">
+                              <% } else { %>
+                                <input type="checkbox" name="IsRec" id="IsRec" class="form-control">
+                              <% } %>
                         </div>
                         
                     </div>
                     <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="message">סוג</label>
+                            <select class="form-control" id="housetype" name="housetype" id="sel1">
+                              <option>לא צויין</option>
+                              <option>דירה</option>
+                              <option>פנטהוז</option>
+                              <option>וילה</option>
+                              <option>קוטג׳</option>
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="message">הערות</label>
                             <textarea name="comments" id="comments" class="form-control" rows="8"><%= house.comments %></textarea>

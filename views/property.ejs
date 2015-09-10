@@ -85,12 +85,13 @@
                 <ul class="info_details">                          
                     <li><strong>מחיר:</strong><span> <%= house.price %> </span></li>
                     <li><strong>חוזה:</strong><span>
-                      <% if(house.action == 1) { %>
-                        למכירה
-                      <% } else { %>
+                      <% if(house.action == true) { %>
                         להשכרה
+                      <% } else { %>
+                        למכירה
                       <% } %>
                     </span></li>
+                    <li><strong>סוג: </strong><span><%= house.housetype %></span></li>
                     <li><strong>קומה:</strong><span><%= house.floor %></span></li>
                     <li><strong>שטח:</strong><span><%= house.size %> מ״ר</span></li>
                     <li><strong>מספר חדרים:</strong><span><%= house.roomnum %></span></li>
@@ -103,10 +104,10 @@
           <div class="col-md-8 col-sm-12">
             <a class="pull-right pad-0 no-of" target="_parent">
                                       
-              <% if(house.action == 1) { %>
-                <div class = "property-tag sale"></div>
-              <% } else { %>
+              <% if(house.action == true) { %>
                 <div class = "property-tag rent"></div>
+              <% } else { %>
+                <div class = "property-tag sale"></div>
               <% } %>
               
               <% if(house.images.length <= 1) { %>

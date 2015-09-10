@@ -120,10 +120,7 @@ router.post('/addhouseform', function(req, res) {
                     }
 
                     // check to see if theres already a user with that username
-                    if (house) {
-                        console.log("2")
-                        return;
-                    } else {
+
                         // create the user
                         var newHouse = new House();
 
@@ -134,15 +131,16 @@ router.post('/addhouseform', function(req, res) {
                         newHouse.view = req.body.view;
                         newHouse.size = req.body.size;
                         newHouse.floor = req.body.floor;
+                        newHouse.housetype = req.body.housetype;
                         newHouse.comments = req.body.comments;
                         newHouse.subcomments = req.body.subcomments;
                         newHouse.IsRec = req.body.IsRec;
-
+                        
                         newHouse.save(function(err) {
                             if (err) throw err;
                             res.redirect('/manage');
                         });
-                    }
+                    
 
                 });
             // if the user is logged in but has no local account...
@@ -177,9 +175,11 @@ router.post('/edithouseform', function(req, res) {
                         house.view = req.body.view;
                         house.size = req.body.size;
                         house.floor = req.body.floor;
+                        house.housetype = req.body.housetype;
                         house.comments = req.body.comments;
                         house.subcomments = req.body.subcomments;
                         house.IsRec = req.body.IsRec;
+                        
                         house.save(function(err) {
                             if (err) throw err;
                             res.redirect('/manage');
