@@ -29,24 +29,20 @@
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>שם מלא</th>
-                    <th>אימייל</th>
-                    <th>פלאפון</th>
-                    <th>נושא</th>
-                    <th>הודעה</th>
-                    <th>מחק</th>
+                    <th>שם העובד</th>
+                    <th>פעולה</th>
+                    <th>יעד</th>
+                    <th>תאריך</th>
                   </tr>
                 </thead>
                 <tbody> 
-                    <% messages.forEach(function(item){ %>
+                    <% logs.forEach(function(item){ %>
                         <tr>
                             <td><%= item._id %></td>
-                            <td><%= item.name %></td>
-                            <td><%= item.email %></td>
-                            <td><%= item.phone %></td>
-                            <td><%= item.subject %></td>
-                            <td><%= item.message %></td>
-                            <td><a class="btn btn-danger btn-md" href="/manage/deleteMessage?id=<%= item._id %>" role="button">מחק</a></td>
+                            <td><%= item.user.name %></td>
+                            <td><%= item.action %></td>
+                            <td><%= item.target %></td>
+                            <td><%= item.date %></td>
                         </tr>
                     <% }); %>
                     

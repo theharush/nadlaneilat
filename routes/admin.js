@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var House = require('../models/houses');
+var logs = require('../models/logs');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -49,14 +50,31 @@ router.get('/workers', isLoggedIn, function(req, res) {
 //Messeges Table
 router.get('/messages', isLoggedIn, function(req, res) {
     console.log("a Logged manager entered /manage");
-    mongoose.model('Message').find(null, null, {sort: {'_id': -1}},function(err, users){
+    mongoose.model('Message').find(null, null, {sort: {'_id': -1}},function(err, messages){
         
         res.render('messages.ejs', {
             user : req.user,
-            users: users,
+            messages: messages,
             title : 'הודעות'
         });
     });
+});
+
+
+//Logs Table
+router.get('/logs', isLoggedIn, function(req, res) {
+    console.log("a Logged manager entered /manage");
+    mongoose.model('logs')
+        .find(null, null, {sort: {'_id': -1}})
+            .populate('user')
+                .exec(function(err, logs){
+                        console.log(logs);
+                        res.render('logs.ejs', {
+                            user : req.user,
+                            logs: logs,
+                            title : 'פעולות'
+                        });
+                });
 });
 
 
@@ -120,7 +138,6 @@ router.post('/addhouseform', function(req, res) {
                     }
 
                     // check to see if theres already a user with that username
-
                         // create the user
                         var newHouse = new House();
 
@@ -138,10 +155,17 @@ router.post('/addhouseform', function(req, res) {
                         
                         newHouse.save(function(err) {
                             if (err) throw err;
+                            
+                            var newLog = new logs();
+                            newLog.user = req.user._id;
+                            newLog.action = "הוספה";
+                            newLog.target = newHouse.adress;
+                            newLog.save(function(err) {
+                                if (err) throw err;
+                            });
+                            
                             res.redirect('/manage');
                         });
-                    
-
                 });
             // if the user is logged in but has no local account...
             } else {
@@ -182,6 +206,15 @@ router.post('/edithouseform', function(req, res) {
                         
                         house.save(function(err) {
                             if (err) throw err;
+                            
+                            var newLog = new logs();
+                            newLog.user = req.user._id;
+                            newLog.action = "עריכה";
+                            newLog.target = house.adress;
+                            newLog.save(function(err) {
+                                if (err) throw err;
+                            });
+                            
                             res.redirect('/manage');
                         });
                         
@@ -259,12 +292,36 @@ router.post('/upload', uploadS3.single("image"), function(req, res) {
 // DELETES ==============================================
 //=======================================================
 router.get('/deleteHouse', isLoggedIn, function(req, res){
-    mongoose.model('houses').find({ '_id': req.query.id }).remove().exec();
+    mongoose.model('houses').findOne({ '_id': req.query.id }).exec(function(err, house){
+        var newLog = new logs();
+    
+        newLog.user = req.user._id;
+        newLog.action = "מחיקה";
+        newLog.target = house.adress;
+    
+        newLog.save(function(err) {
+            if (err) throw err;
+            mongoose.model('houses').find({ '_id': req.query.id }).remove().exec();
+        });
+    });
+    
     res.redirect('/manage');
 });
 
 router.get('/deleteUser', isLoggedIn, function(req, res){
-    mongoose.model('User').find({ '_id': req.query.id }).remove().exec();
+    mongoose.model('User').findOne({ '_id': req.query.id }).exec(function(err, user){
+        var newLog = new logs();
+    
+        newLog.user = req.user._id;
+        newLog.action = "מחיקה";
+        newLog.target = user.name;
+    
+        newLog.save(function(err) {
+            if (err) throw err;
+            mongoose.model('User').find({ '_id': req.query.id }).remove().exec();
+        });
+    });
+    
     res.redirect('/manage');
 });
 
