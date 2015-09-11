@@ -1,10 +1,10 @@
 var express = require('express');
+var mongoose = require('mongoose');
 var router = express.Router();
 
-/* GET about page. */
+/* GET board page. */
 router.get('/', function(req, res, next) {
-  res.render('about', { title: 'אודות המשרד',
-                        name : 'Eyal'});
+        res.render('projects', { title: 'פרוייקטים'});
 });
 
 module.exports = router;

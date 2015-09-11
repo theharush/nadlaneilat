@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
         
     console.log(query);
     mongoose.model('houses').find(query, function(err, hou){
-        res.render('board', { title: 'Board',
+        res.render('board', { title: 'לוח נכסים',
                               query: query,
                               properties: hou});
     });

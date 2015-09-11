@@ -5,7 +5,7 @@ var Message = require('../models/message');
 
 /* GET contact page. */
 router.get('/', function(req, res, next) {
-  res.render('contact', { title: 'Contact'});
+  res.render('contact', { title: 'צרו קשר'});
 });
 
 

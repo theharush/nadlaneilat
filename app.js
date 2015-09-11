@@ -70,6 +70,7 @@ function loadHouses (req, res, next) {
 var homepage = require('./routes/index');
 var about = require('./routes/about');
 var board = require('./routes/board');
+var projects = require('./routes/project');
 var contact = require('./routes/contact');
 var property = require('./routes/property');
 var login = require('./routes/login');
@@ -83,6 +84,7 @@ app.use(loadHouses)
 app.use('/', homepage);
 app.use('/about', about);
 app.use('/board', board);
+app.use('/projects', projects)
 app.use('/contact', contact);
 app.use('/property', property);
 app.use('/login', login);
