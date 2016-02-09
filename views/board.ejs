@@ -25,6 +25,30 @@
         .about{
             margin-bottom:-1px;
         }
+        
+        
+      .itemimg{
+        height:170px;
+        width:100%;
+      }
+      .comBox {
+          position: relative;
+          font-family: sans-serif;
+          display: block;
+          width: 100%;
+          height: 1em;
+          overflow: hidden;
+      }
+      .comBox .comText {
+          width: 100%;
+          overflow: hidden;
+          line-height: 1;
+          text-align: justify;
+      }
+      
+      .navbar-fixed-bottom, .navbar-fixed-top {
+          position: absolute;
+      }
 
     </style>
     
@@ -84,29 +108,58 @@
                 </div>
             </div>
                 
-            <div class="row">
 
-                 <% properties.forEach(function(item){ %>
-                  <% var img = "https://s3.amazonaws.com/nadlaneilatimages" + item.images[0] %>
-                          <div class="col-lg-4 col-sm-6 col-xs-12">
-                              <!-- Begin Listing-->
-                              <% var propid = item._id %>
-                              <div class="bgc-fff btm-mrg-20 property-listing">
-                                  <div class="property">
+    <style>
+      .itemimg{
+        height:170px;
+        width:100%;
+      }
+      .comBox {
+          position: relative;
+          font-family: sans-serif;
+          display: block;
+          width: 100%;
+          height: 1em;
+          overflow: hidden;
+      }
+      .comBox .comText {
+          width: 100%;
+          overflow: hidden;
+          line-height: 1;
+          text-align: justify;
+      }
+      #property-listings .property-listing img {
+        height:170px;
+        width:100%;
+        max-width:100%;
+      }
+      .listing{
+        float:right;
+      }
+    </style>
+
+
+                <% properties.forEach(function(item){ %>
+                     <% var img = "https://s3.amazonaws.com/nadlaneilatimages" + item.images[0] %>
+                          <div class="owl-item darkCyan listing">
+                            <div class="bgc-fff btm-mrg-20 property-listing">
+                                  <div class="property <%= item._id %>">
                                       <div class="property-img">
                                           <a class="pull-right pad-0 no-of" href="/property?id=<%= item._id %>" target="_parent">
+                                            
                                             <% if(item.action == true) { %>
-                                                <div class = "property-tag rent"></div>
-                                              <% } else { %>
-                                                <div class = "property-tag sale"></div>
-                                              <% } %>
-                                          <img alt="תמונה לא נמצאה" class="img-responsive" src="<%= img %>" onerror="if (this.src != 'prop-images/0/1.jpg') this.src = 'prop-images/0/1.jpg';">
+                                              <div class = "property-tag rent"></div>
+                                            <% } else { %>
+                                              <div class = "property-tag sale"></div>
+                                            <% } %>
+                                            
+                                            <img src="<%= img %>" onerror="if (this.src != 'prop-images/0/1.jpg') this.src = 'prop-images/0/1.jpg';" alt="image" class="img-responsive itemimg" > 
                                           </a>
                                       </div>
                                       <div class="clearfix visible-sm"></div>
                                       <div class="media-body fnt-smaller pad-10">
                                           <h4 class="media-heading">
-                                            <a href="/property?id=<%= item._id %>" target="_parent"> <%= item.adress %> <small class="pull-left"><%= item.price %></small></a></h4>
+                                            <a href="/property?id=<%= item._id %>" target="_parent"><%= item.adress  %><small class="pull-left"><%= item.price %></small></a></h4>
                                           <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
                                               <li><%= item.roomnum %> חדרים</li>
                                               <li style="list-style: none">|</li>
@@ -115,24 +168,34 @@
                                               <li><%= item.size %> מ״ר</li>
                                           </ul>
                                           <p class="hidden-xs">
-                                              <%= item.comments %>
+                                              <div class="comBox">
+                                                  <div class="comText">
+                                                    <%= item.comments %>...
+                                                  </div>
+                                              </div>
                                           </p><span class="fnt-smaller fnt-lighter fnt-arial">
-                                              <%= item.subcomments %>
+                                              <% if(item.subcomments) {%>
+                                                <%= item.subcomments %>
+                                              <% } else { %>
+                                                אין הערות קטנות.
+                                              <% } %>
+                                              
                                           </span>
                                       </div>
                                   </div>
                               </div><!-- End Listing-->
-                        </div>
+                          </div>
+                
+
                 <% }); %>
+  
+  
+              </div>
+            </div>
+          </div>
+        </div>
 
-                </div><!-- End Col -->
-            </div><!-- End row -->
-        </div><!-- End container -->
-        
-        <% include templates/adbanner.ejs%>
-    
     <% include templates/footer.ejs%>
-
 
   </body>
 </html>

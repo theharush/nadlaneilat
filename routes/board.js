@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
     var adress=req.query.adress;
     var price=parseInt(req.query.price) + 1;
     var roomnum=req.query.roomnum;
+    var recom = req.query.recom;
     var query = {};
     
     if(adress)
@@ -15,6 +16,8 @@ router.get('/', function(req, res, next) {
         query.price = { $gt: 0, $lt: price };
     if(roomnum)
         query.roomnum = roomnum;
+    if(recom)
+        query.IsRec = recom;
         
     console.log(query);
     mongoose.model('houses').find(query, function(err, hou){
