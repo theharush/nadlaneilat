@@ -140,6 +140,9 @@
     </style>
 
 
+                <div class="row">
+                <% var count = 0 %>
+
                 <% properties.forEach(function(item){ %>
                      <% var img = "https://s3.amazonaws.com/nadlaneilatimages" + item.images[0] %>
                           <div class="owl-item darkCyan listing">
@@ -187,9 +190,13 @@
                               </div><!-- End Listing-->
                           </div>
                 
-
+                  <% if(count === 4){ %>
+                    <br>
+                    <% count = 1 %>
+                  <% } %>
+                  <% count++ %>
                 <% }); %>
-  
+                </div>
   
               </div>
             </div>
