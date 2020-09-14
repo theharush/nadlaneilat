@@ -1,5 +1,5 @@
 {
-  "name": "NadlanEilat",
+  "name": "nadlaneilat",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -31,7 +31,7 @@
   },
   "author": "jane-doe",
   "engines": {
-    "node": "0.10.x"
+    "node": "12.18.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
