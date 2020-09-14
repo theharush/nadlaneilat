@@ -1,5 +1,5 @@
 {
-    "name": "smartbull-indexes",
+    "name": "nadlaneilat",
     "env": {
       "MONGO_URI": {
         "required": true
@@ -18,9 +18,6 @@
     },
     "formation": {
       "web": {
-        "quantity": 1
-      },
-      "worker": {
         "quantity": 1
       }
     }

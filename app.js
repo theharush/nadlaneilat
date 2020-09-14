@@ -10,7 +10,7 @@ var passport = require("passport");
 var flash = require("connect-flash");
 var favicon = require("serve-favicon");
 var device = require("express-device");
-var keys = require("./keys")
+var keys = require("./keys");
 
 //Setting up DB Connection  ===============================
 mongoose.connect(keys.mongoURI, {
@@ -51,7 +51,13 @@ app.use(device.capture());
 device.enableDeviceHelpers(app);
 
 // Passport Authentication initializing and setup =============================
-app.use(session({ secret: keys.cookieSecret })); // session secret
+app.use(
+    session({
+        secret: keys.cookieSecret,
+        resave: true,
+        saveUninitialized: true,
+    })
+); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
