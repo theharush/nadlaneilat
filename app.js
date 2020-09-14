@@ -12,9 +12,11 @@ var morgan = require('morgan');
 var houses = require('./models/houses');
 var favicon = require('serve-favicon');
 var device = require('express-device');
+var keys = require("./keys");
+
 
 //Setting up DB Connection  ===============================
-mongoose.connect('mongodb://nadlaneilat:nadlan1234@ds033123.mongolab.com:33123/nadlaneilat');
+mongoose.connect(keys.MONGO_URI);
 //-->Connection DEBUG
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -45,7 +47,7 @@ device.enableDeviceHelpers(app)
 
 
 // Passport Authentication initializing and setup =============================
-app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(session({ secret: keys.cookieSecret })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
@@ -75,6 +77,7 @@ var contact = require('./routes/contact');
 var property = require('./routes/property');
 var login = require('./routes/login');
 var admin = require('./routes/admin');
+const prod = require('./ keys/prod');
 admin.use(express.static(path.join(__dirname, 'public')));
 admin.use(flash()); // use connect-flash for flash messages stored in session
 
