@@ -2,9 +2,7 @@
 <html>
   <head>
     <title><%= house.adress %></title>
-    <% include templates/head.ejs%>
-    <% var img = "https://s3.amazonaws.com/nadlaneilatimages" + house.images[0] %>
-    
+    <% include templates/head.ejs%>    
     
     
     <style>
@@ -110,10 +108,7 @@
                 <div class = "property-tag sale"></div>
               <% } %>
               
-              <% if(house.images.length <= 1) { %>
-                  <img class="featureimg" alt="לבית זה אין תמונות." src="<%= img %>" onerror="if (this.src != 'prop-images/0/1.jpg') this.src = 'prop-images/0/1.jpg';">
-              <% } else { %>
-
+              <% if(images && images.length) { %>
                   <div class="container carousel-container ">
                       <div class="row ">
                           <!-- The carousel -->
@@ -121,7 +116,7 @@
                   			<!-- Indicators -->
                   			<ol class="carousel-indicators">
                   				<li data-target="#transition-timer-carousel" data-slide-to="0" class="active"></li>
-                  				<% for(var num = 1; num< house.images.length; num++) {%>
+                  				<% for(var num = 1; num< images.length; num++) {%>
                   				    <li data-target="#transition-timer-carousel" data-slide-to="<%= num %>"></li>
                   				<% } %>
                   			</ol>
@@ -129,15 +124,14 @@
                   			<!-- Wrapper for slides -->
                   			<div class="carousel-inner">
                       				<% var first = true %>
-                      				<% for(var num = 0; num< house.images.length; num++) {%>
+                      				<% for(var num = 0; num< images.length; num++) {%>
                         				  <% if(first == true) { %>
                         				    <div class="item active">
                         				    <% first = false %>
                         				  <% } else { %>
                         				    <div class="item">
                         				  <% } %>
-                      				        <% var img = "https://s3.amazonaws.com/nadlaneilatimages" + house.images[num] %>
-                          				    <img class = "slider-img featureimg" alt="תמונה לא נמצאה" src="<%= img %>" onerror="if (this.src != 'prop-images/0/1.jpg') this.src = 'prop-images/0/1.jpg';"/>
+                          				    <img class = "slider-img featureimg" alt="תמונה לא נמצאה" src="<%= images[num] %>"/>
                                     </div>
                       				<% } %>
                                      </div>
@@ -149,6 +143,8 @@
                       </div>
                   </div>
                   <!--end carousel-->
+              <% } else { %>
+                <img class="featureimg" alt="לבית זה אין תמונות." src="<%= images[0] %>">
               <% } %>
                 
                 

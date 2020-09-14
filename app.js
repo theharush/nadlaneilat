@@ -12,6 +12,9 @@ var favicon = require("serve-favicon");
 var device = require("express-device");
 var keys = require("./keys");
 
+//exporting global var path
+global.path = __dirname;
+
 //Setting up DB Connection  ===============================
 mongoose.connect(keys.mongoURI, {
     useNewUrlParser: true,
