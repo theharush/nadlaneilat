@@ -1,0 +1,28 @@
+{
+    "name": "smartbull-indexes",
+    "env": {
+      "MONGO_URI": {
+        "required": true
+      },
+      "NODE_ENV": {
+        "required": true
+      },
+      "HEROKU_APP_NAME": {
+        "required": true
+      },
+      "COOKIE_SECRET": {
+        "required": true
+      }
+    },
+    "scripts": {
+    },
+    "formation": {
+      "web": {
+        "quantity": 1
+      },
+      "worker": {
+        "quantity": 1
+      }
+    }
+  }
+  
