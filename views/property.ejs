@@ -131,7 +131,7 @@
                         				  <% } else { %>
                         				    <div class="item">
                         				  <% } %>
-                          				    <img class = "slider-img featureimg" alt="תמונה לא נמצאה" src="<%= house.images[num] %>"/>
+                          				    <img class = "slider-img featureimg" alt="תמונה לא נמצאה" src="<%= house.images[num] %>" onerror="this.src = 'prop-images/0/1.jpg';"/>
                                     </div>
                       				<% } %>
                                      </div>
@@ -144,7 +144,7 @@
                   </div>
                   <!--end carousel-->
               <% } else { %>
-                <img class="featureimg" alt="לבית זה אין תמונות." src="<%= house.images[0] %>">
+                <img class="featureimg" alt="לבית זה אין תמונות." src="prop-images/0/1.jpg">
               <% } %>
                 
                 

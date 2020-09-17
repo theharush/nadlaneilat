@@ -58,6 +58,7 @@
                                             alt="תמונה לא נמצאה"
                                             class="img-responsive"
                                             src="<%= img %>"
+                                            onerror="this.src = 'prop-images/0/1.jpg';"
                                         />
                                     </a>
                                 </div>
@@ -159,6 +160,10 @@
                 </form>
             </div>
         </div>
+
+        <% include templates/recSlideshow.ejs%>
+
+
         <% include templates/footer.ejs%>
     </body>
 </html>
