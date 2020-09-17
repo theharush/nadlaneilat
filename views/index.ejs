@@ -1,133 +1,169 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <% include templates/head.ejs%>
-    <style>
-      .search-bar .form-inline .form-group{
-        width:100%;
-      }
-    
-    </style>
-  </head>
-  <body>
+    <head>
+        <title><%= title %></title>
+        <% include templates/head.ejs%>
+        <style>
+            .search-bar .form-inline .form-group {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <% include templates/header.ejs%>
 
-    <% include templates/header.ejs%>
-    
-    <div class="container hidden-xs" style="width:100%;">
-      <div class="row contactlink">
-        <p>
-            מבולבלים? רוצים ש<strong>אנחנו </strong>נחזור אליכם? צרו קשר עכשיו <a href="/contact#contact-tag">כאן!</a>
-        </p>
-      </div>
-    </div>
-    
-    
-    <% include templates/homeCarousel.ejs%>
+        <div class="container hidden-xs" style="width: 100%">
+            <div class="row contactlink">
+                <p>
+                    מבולבלים? רוצים ש<strong>אנחנו </strong>נחזור אליכם? צרו קשר
+                    עכשיו <a href="/contact#contact-tag">כאן!</a>
+                </p>
+            </div>
+        </div>
 
-      
- <div class="container-fluid properties-container" >
-        <div class="container container-pad" id="property-listings">
-            <div class="row">
-                <div class="col-sm-12 properties-header">
+        <% include templates/homeCarousel.ejs%>
+
+        <div class="container-fluid properties-container">
+            <div class="container container-pad" id="property-listings">
+                <div class="row">
+                    <div class="col-sm-12 properties-header">
                         <span class="properties-subtitle">הצעות</span>
-                        <br>
+                        <br />
                         <h1 class="properties-title">נכסינו האחרונים</h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <% var num = 0; for(var i=1; i<3; i++) {%> <% for(var k=1;
+                    k<3; k++) {%>
+                    <div class="col-md-6">
+                        <!-- Begin Listing-->
+                        <% var propid = houses[num]._id %> 
+                        <% var img = houses[num].images[0] %>
+                        <div class="bgc-fff btm-mrg-20 property-listing">
+                            <div class="property">
+                                <div class="property-img">
+                                    <a
+                                        class="pull-right pad-0 no-of"
+                                        href="/property?id=<%= propid %>"
+                                        target="_parent"
+                                    >
+                                        <% if(houses[num].action == true) { %>
+                                        <div class="property-tag rent"></div>
+                                        <% } else { %>
+                                        <div class="property-tag sale"></div>
+                                        <% } %>
+
+                                        <img
+                                            alt="תמונה לא נמצאה"
+                                            class="img-responsive"
+                                            src="<%= img %>"
+                                            onerror="this.src = 'prop-images/0/1.jpg';"
+                                        />
+                                    </a>
+                                </div>
+                                <div class="clearfix visible-sm"></div>
+                                <div class="media-body fnt-smaller pad-10">
+                                    <h4 class="media-heading">
+                                        <a
+                                            href="/property?id=<%= propid %>"
+                                            target="_parent"
+                                        >
+                                            <%= houses[num].adress %>
+                                            <small class="pull-left"
+                                                ><%= houses[num].price %></small
+                                            ></a
+                                        >
+                                    </h4>
+                                    <ul
+                                        class="list-inline mrg-0 btm-mrg-10 clr-535353"
+                                    >
+                                        <li>
+                                            <%= houses[num].roomnum %> חדרים
+                                        </li>
+                                        <li style="list-style: none">|</li>
+                                        <li><%= houses[num].view %></li>
+                                        <li style="list-style: none">|</li>
+                                        <li><%= houses[num].size %> מ״ר</li>
+                                    </ul>
+                                    <p class="hidden-xs">
+                                        <%= houses[num].comments %>
+                                    </p>
+                                    <span
+                                        class="fnt-smaller fnt-lighter fnt-arial"
+                                    >
+                                        <%= houses[num].subcomments %>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Listing-->
+                    </div>
+
+                    <% num++; } %> <% } %>
+                </div>
+                <!-- End Col -->
+                <% if(!is_desktop) { %>
+                <div
+                    class="row"
+                    style="text-align:center; hidden-md hidden-lg hidden-xl"
+                >
+                    <script
+                        type="text/javascript"
+                        src="//eclkmpbn.com/adServe/banners?tid=58364_90224_4"
+                    ></script>
+                </div>
+                <% } %>
+            </div>
+            <!-- End row -->
+        </div>
+        <!-- End container -->
+
+        <div class="container search-bar hidden-md hidden-lg hidden-xl">
+            <div class="row" style="background: #fff; margin-top: 20px">
+                <div class="col-sm-12 properties-header">
+                    <span class="properties-subtitle">חסוך זמן</span>
+                    <br />
+                    <h1 class="properties-title">חיפוש מותאם</h1>
                 </div>
             </div>
-                
             <div class="row">
-
-                <% var num = 0; for(var i=1; i<3; i++) {%>
-                        
-                        <% for(var k=1; k<3; k++) {%>
-                          <div class="col-md-6">
-                              <!-- Begin Listing-->
-                              <% var propid = houses[num]._id %>
-                              <% var img = "https://s3.amazonaws.com/nadlaneilatimages" + houses[num].images[0] %>
-                              <div class="bgc-fff btm-mrg-20 property-listing">
-                                  <div class="property">
-                                      <div class="property-img">
-                                          <a class="pull-right pad-0 no-of" href="/property?id=<%= propid %>" target="_parent">
-                                            
-                                          <% if(houses[num].action == true) { %>
-                                                <div class = "property-tag rent"></div>
-                                              <% } else { %>
-                                                <div class = "property-tag sale"></div>
-                                              <% } %>
-                                          
-                                          <img alt="תמונה לא נמצאה" class="img-responsive" src="<%= img %>" onerror="if (this.src != 'prop-images/0/1.jpg') this.src = 'prop-images/0/1.jpg';">
-                                          </a>
-                                      </div>
-                                      <div class="clearfix visible-sm"></div>
-                                      <div class="media-body fnt-smaller pad-10">
-                                          <h4 class="media-heading">
-                                            <a href="/property?id=<%= propid %>" target="_parent"> <%= houses[num].adress %> <small class="pull-left"><%= houses[num].price %></small></a></h4>
-                                          <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-                                              <li><%= houses[num].roomnum %> חדרים</li>
-                                              <li style="list-style: none">|</li>
-                                              <li><%= houses[num].view %></li>
-                                              <li style="list-style: none">|</li>
-                                              <li><%= houses[num].size %> מ״ר</li>
-                                          </ul>
-                                          <p class="hidden-xs">
-                                              <%= houses[num].comments %>
-                                          </p><span class="fnt-smaller fnt-lighter fnt-arial">
-                                              <%= houses[num].subcomments %>
-                                          </span>
-                                      </div>
-                                  </div>
-                              </div><!-- End Listing-->
-                        </div>
-
-                        <% num++; } %>
-                <% } %>
-
-                </div><!-- End Col -->
-                        <% if(!is_desktop) { %>
-                          <div class="row" style="text-align:center; hidden-md hidden-lg hidden-xl">
-                            <script type='text/javascript' src='//eclkmpbn.com/adServe/banners?tid=58364_90224_4'></script>
-                          </div>
-                        <% } %>
-            </div><!-- End row -->
-            
-            
-        </div><!-- End container -->
-
-    <div class="container search-bar hidden-md hidden-lg hidden-xl">
-          <div class="row" style="background:#fff; margin-top:20px;">
-            <div class="col-sm-12 properties-header">
-                    <span class="properties-subtitle">חסוך זמן</span>
-                    <br>
-                    <h1 class="properties-title"> חיפוש מותאם</h1>
+                <form class="form-inline" role="form" action="/board">
+                    <div class="form-group">
+                        <label for="adress">כתובת</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="adress"
+                            name="adress"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="price">תקציב</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="price"
+                            name="price"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="roomnum">מס׳ חדרים</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="roomnum"
+                            name="roomnum"
+                        />
+                    </div>
+                    <button type="submit" class="btn btn-default">חפש</button>
+                </form>
             </div>
         </div>
-        <div class="row">
-            <form class="form-inline" role="form" action="/board">
-              <div class="form-group">
-                <label for="adress">כתובת</label>
-                <input type="text" class="form-control" id="adress" name="adress" >
-              </div>
-              <div class="form-group">
-                <label for="price">תקציב</label>
-                <input type="number" class="form-control" id="price" name="price">
-              </div>
-              <div class="form-group">
-                <label for="roomnum">מס׳ חדרים</label>
-                <input type="number" class="form-control" id="roomnum" name="roomnum" >
-                                                                                    
-              </div>
-              <button type="submit" class="btn btn-default">חפש</button>
-            </form>
-        </div>
-      </div>
 
-      
-    <% include templates/recSlideshow.ejs%>
-
-    
-    <% include templates/footer.ejs%>
+        <% include templates/recSlideshow.ejs%>
 
 
-  </body>
+        <% include templates/footer.ejs%>
+    </body>
 </html>

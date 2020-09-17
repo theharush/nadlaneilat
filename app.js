@@ -12,6 +12,9 @@ var favicon = require("serve-favicon");
 var device = require("express-device");
 var keys = require("./keys");
 
+//exporting global var path
+global.path = __dirname;
+
 //Setting up DB Connection  ===============================
 mongoose.connect(keys.mongoURI, {
     useNewUrlParser: true,
@@ -65,22 +68,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 //Local Variables  ===============================
 app.locals.recom = require("./recommended.json");
 app.locals.homepath = path.join(__dirname, "public");
-mongoose
-    .model("houses")
-    .find(null, null, { sort: { _id: -1 } }, function (err, hou) {
-        app.locals.houses = hou;
-    });
 
-function loadHouses(req, res, next) {
-    if (req.method === "GET") {
-        mongoose
-            .model("houses")
-            .find(null, null, { sort: { _id: -1 } }, function (err, hou) {
-                app.locals.houses = hou;
-            });
-    }
-    next();
-}
 
 //Requiring Express Routes  ===============================
 var homepage = require("./routes/index");
@@ -95,7 +83,6 @@ admin.use(express.static(path.join(__dirname, "public")));
 admin.use(flash()); // use connect-flash for flash messages stored in session
 
 //Routing URLs  ===============================
-app.use(loadHouses);
 app.use("/", homepage);
 app.use("/about", about);
 app.use("/board", board);

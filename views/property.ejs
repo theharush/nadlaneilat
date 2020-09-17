@@ -2,9 +2,7 @@
 <html>
   <head>
     <title><%= house.adress %></title>
-    <% include templates/head.ejs%>
-    <% var img = "https://s3.amazonaws.com/nadlaneilatimages" + house.images[0] %>
-    
+    <% include templates/head.ejs%>    
     
     
     <style>
@@ -110,10 +108,7 @@
                 <div class = "property-tag sale"></div>
               <% } %>
               
-              <% if(house.images.length <= 1) { %>
-                  <img class="featureimg" alt="לבית זה אין תמונות." src="<%= img %>" onerror="if (this.src != 'prop-images/0/1.jpg') this.src = 'prop-images/0/1.jpg';">
-              <% } else { %>
-
+              <% if(house.images && house.images.length) { %>
                   <div class="container carousel-container ">
                       <div class="row ">
                           <!-- The carousel -->
@@ -136,8 +131,7 @@
                         				  <% } else { %>
                         				    <div class="item">
                         				  <% } %>
-                      				        <% var img = "https://s3.amazonaws.com/nadlaneilatimages" + house.images[num] %>
-                          				    <img class = "slider-img featureimg" alt="תמונה לא נמצאה" src="<%= img %>" onerror="if (this.src != 'prop-images/0/1.jpg') this.src = 'prop-images/0/1.jpg';"/>
+                          				    <img class = "slider-img featureimg" alt="תמונה לא נמצאה" src="<%= house.images[num] %>" onerror="this.src = 'prop-images/0/1.jpg';"/>
                                     </div>
                       				<% } %>
                                      </div>
@@ -149,6 +143,8 @@
                       </div>
                   </div>
                   <!--end carousel-->
+              <% } else { %>
+                <img class="featureimg" alt="לבית זה אין תמונות." src="prop-images/0/1.jpg">
               <% } %>
                 
                 
@@ -169,8 +165,6 @@
       </div>
     </div>
 
-
-    <% include templates/recSlideshow.ejs%>
 
     <% include templates/footer.ejs%>
 
