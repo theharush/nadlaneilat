@@ -108,7 +108,7 @@
                 <div class = "property-tag sale"></div>
               <% } %>
               
-              <% if(images && images.length) { %>
+              <% if(house.images && house.images.length) { %>
                   <div class="container carousel-container ">
                       <div class="row ">
                           <!-- The carousel -->
@@ -116,7 +116,7 @@
                   			<!-- Indicators -->
                   			<ol class="carousel-indicators">
                   				<li data-target="#transition-timer-carousel" data-slide-to="0" class="active"></li>
-                  				<% for(var num = 1; num< images.length; num++) {%>
+                  				<% for(var num = 1; num< house.images.length; num++) {%>
                   				    <li data-target="#transition-timer-carousel" data-slide-to="<%= num %>"></li>
                   				<% } %>
                   			</ol>
@@ -124,14 +124,14 @@
                   			<!-- Wrapper for slides -->
                   			<div class="carousel-inner">
                       				<% var first = true %>
-                      				<% for(var num = 0; num< images.length; num++) {%>
+                      				<% for(var num = 0; num< house.images.length; num++) {%>
                         				  <% if(first == true) { %>
                         				    <div class="item active">
                         				    <% first = false %>
                         				  <% } else { %>
                         				    <div class="item">
                         				  <% } %>
-                          				    <img class = "slider-img featureimg" alt="תמונה לא נמצאה" src="<%= images[num] %>"/>
+                          				    <img class = "slider-img featureimg" alt="תמונה לא נמצאה" src="<%= house.images[num] %>"/>
                                     </div>
                       				<% } %>
                                      </div>
@@ -144,7 +144,7 @@
                   </div>
                   <!--end carousel-->
               <% } else { %>
-                <img class="featureimg" alt="לבית זה אין תמונות." src="<%= images[0] %>">
+                <img class="featureimg" alt="לבית זה אין תמונות." src="<%= house.images[0] %>">
               <% } %>
                 
                 
@@ -165,8 +165,6 @@
       </div>
     </div>
 
-
-    <% include templates/recSlideshow.ejs%>
 
     <% include templates/footer.ejs%>
 
